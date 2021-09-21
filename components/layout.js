@@ -9,7 +9,7 @@ export const siteTitle = 'Amayadori Blog'
 
 export default function Layout({ children, home }) {
   return (
-    <div className={styles.container}>
+    <div className={styles.appBody}>
       <Head>
         <link rel="icon" href="/favicon.ico" />
         <meta
@@ -25,49 +25,54 @@ export default function Layout({ children, home }) {
         <meta name="og:title" content={siteTitle} />
         <meta name="twitter:card" content="summary_large_image" />
       </Head>
-      <header className={styles.header}>
-        {home ? (
-          <>
+
+      <Header/>
+
+      <main>
+        <div className={styles.container}>
+          {children}
+        </div>
+      </main>
+
+      <Footer/>
+    </div>
+  )
+}
+
+function Header() {
+  return(
+    <header className={styles.header}>
+      <div className={styles.container}>
+
+        {/* <Link href="/">
+          <a>
             <Image
               priority
               src="/images/profile.png"
               className={utilStyles.borderCircle}
-              height={144}
-              width={144}
+              height={108}
+              width={108}
               alt={name}
             />
-            <h1 className={utilStyles.heading2Xl}>{name}</h1>
-          </>
-        ) : (
-          <>
-            <Link href="/">
-              <a>
-                <Image
-                  priority
-                  src="/images/profile.png"
-                  className={utilStyles.borderCircle}
-                  height={108}
-                  width={108}
-                  alt={name}
-                />
-              </a>
-            </Link>
-            <h2 className={utilStyles.headingLg}>
-              <Link href="/">
-                <a className={utilStyles.colorInherit}>{name}</a>
-              </Link>
-            </h2>
-          </>
-        )}
-      </header>
-      <main>{children}</main>
-      {!home && (
-        <div className={styles.backToHome}>
-          <Link href="/">
-            <a>← Back to home</a>
-          </Link>
+          </a>
+        </Link> */}
+        <div className={styles.headerLogo}>
+        <Link href="/">
+          <a>{name}</a>
+        </Link>
         </div>
-      )}
-    </div>
+
+      </div>
+    </header>
+  )
+}
+
+function Footer() {
+  const d = new Date();
+  const currentYear = d.getFullYear();
+  return(
+    <footer className={styles.footer}>
+      <div className={styles.container}>© {currentYear} Amayadori.cloud</div>
+    </footer>
   )
 }

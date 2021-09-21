@@ -1,15 +1,49 @@
+$main: #e2edda;
+$dark-main: #539550;
+$light-main: #f5fdef;
+$highlight: #ffcece;
+$dark-highlight: #e69595;
+$light-accent: #fffce3;
+
+.appBody {
+  font-size: 16px;
+  background: $main;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",　Arial, sans-serif;
+  font-weight: 300;
+}
+
 .container {
-  max-width: 36rem;
-  padding: 0 1rem;
-  margin: 3rem auto 6rem;
+  width: 90%;
+  max-width: 800px;
+  margin: auto;
 }
 
 .header {
   display: flex;
   flex-direction: column;
   align-items: center;
+  background: $light-accent;
+  
+  .headerLogo, .headerLogo * {
+    text-decoration: none;
+    color: $light-main;
+    font-size: 1.5em;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-shadow: -2px -2px 0 $highlight, 2px -2px 0 $dark-main, -2px 2px 0 $dark-main, 2px 2px 0 $dark-main;
+  }
 }
 
-.backToHome {
-  margin: 3rem 0 0;
+
+.footer {
+  font-size: 1rem;
+  text-align: center;
+  background-image: url(/images/frog-swamp-pc.png);
+  background-size: cover;
+  padding-top: 275px;
+  background-position: center;
+  color: #799d7c;
+  .container {
+    padding: 3em 0;
+  }
 }
