@@ -1,21 +1,7 @@
-$main: #e2edda;
-$dark-main: #539550;
-$light-main: #f5fdef;
-$highlight: #ffcece;
-$dark-highlight: #e69595;
-$light-accent: #fffce3;
+@use "../styles/vars" as *;
 
 .appBody {
-  font-size: 16px;
   background: $main;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",　Arial, sans-serif;
-  font-weight: 300;
-}
-
-.container {
-  width: 90%;
-  max-width: 800px;
-  margin: auto;
 }
 
 .header {
@@ -34,7 +20,6 @@ $light-accent: #fffce3;
   }
 }
 
-
 .footer {
   font-size: 1rem;
   text-align: center;
@@ -45,5 +30,65 @@ $light-accent: #fffce3;
   color: #799d7c;
   .container {
     padding: 3em 0;
+  }
+}
+
+%container {
+  width: 90%;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.container {
+  @extend %container;
+}
+
+.mainContainer {
+  @extend %container;
+  display: flex;
+  margin: 2em auto;
+}
+
+%box-padding {
+  padding: 1.5em 2.5em;
+}
+
+.main {
+  width: 70%;
+  background: #fff;
+  @extend %box-padding;
+}
+
+.sidebar {
+  width: 30%;
+  padding-left: 30px;
+
+  .sideContain {
+    background: #fff;
+    @extend %box-padding;
+  }
+  h2 {
+    color: $dark-main;
+    border-bottom: 2px solid $dark-highlight;
+    margin: 0;
+  }
+  ul { 
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+}
+
+@media only screen and (max-width: $tablet2) {
+  .mainContainer {
+    flex-direction: column;
+  }
+  .main {
+    width: 100%;
+    margin-bottom: 2.5em;
+  }
+  .sidebar {
+    width: 100%;
+    padding: 0;
   }
 }

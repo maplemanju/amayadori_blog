@@ -20,22 +20,22 @@ export default function Home({ allPostsData }) {
       <Head>
         <title>{siteTitle}</title>
       </Head>
-      <section className={utilStyles.headingMd}>
-        <p>Hello Im Maya, Front End Dev, React Dev.</p>
-      </section>
-
-      <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
-        <h2 className={utilStyles.headingLg}>Blog</h2>
-        <ul className={utilStyles.list}>
-          {allPostsData.map(({ id, date, title }) => (
+      <section>
+        <ul className={utilStyles.blogList}>
+          {allPostsData.map(({ id, date, title, summary }) => (
             <li className={utilStyles.listItem} key={id}>
+              <h2 className={utilStyles.headingStyle1}>
               <Link href={`/posts/${id}`}>
                 <a>{title}</a>
               </Link>
-              <br />
-              <small className={utilStyles.lightText}>
+              </h2>
+              <div className={utilStyles.lightText}>
                 <Date dateString={date} />
-              </small>
+              </div>
+              <p>{summary}</p>
+              <Link href={`/posts/${id}`}>
+                <a>Read More »</a>
+              </Link>
             </li>
           ))}
         </ul>

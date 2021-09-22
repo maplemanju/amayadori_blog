@@ -3,6 +3,7 @@ import Image from 'next/image'
 import styles from './layout.module.scss'
 import utilStyles from '../styles/utils.module.scss'
 import Link from 'next/link'
+import Sidebar from './sidebar'
 
 const name = 'Amayadori'
 export const siteTitle = 'Amayadori Blog'
@@ -25,15 +26,14 @@ export default function Layout({ children, home }) {
         <meta name="og:title" content={siteTitle} />
         <meta name="twitter:card" content="summary_large_image" />
       </Head>
-
       <Header/>
-
-      <main>
-        <div className={styles.container}>
+      <div className={styles.mainContainer}>
+        <main className={styles.main}>
           {children}
-        </div>
-      </main>
+        </main>
 
+        <Aside/>
+      </div>
       <Footer/>
     </div>
   )
@@ -74,5 +74,11 @@ function Footer() {
     <footer className={styles.footer}>
       <div className={styles.container}>© {currentYear} Amayadori.cloud</div>
     </footer>
+  )
+}
+
+function Aside() {
+  return(
+    <Sidebar/>
   )
 }
