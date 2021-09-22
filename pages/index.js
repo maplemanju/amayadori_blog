@@ -25,7 +25,7 @@ export default function Home({ allPostsData }) {
           {allPostsData.map(({ id, date, title, summary }) => (
             <li className={utilStyles.listItem} key={id}>
               <h2 className={utilStyles.headingStyle1}>
-              <Link href={`/posts/${id}`}>
+              <Link href={`/${id}`}>
                 <a>{title}</a>
               </Link>
               </h2>
@@ -33,7 +33,7 @@ export default function Home({ allPostsData }) {
                 <Date dateString={date} />
               </div>
               <p>{summary}</p>
-              <Link href={`/posts/${id}`}>
+              <Link href={`/${id}`}>
                 <a>Read More »</a>
               </Link>
             </li>
