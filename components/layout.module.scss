@@ -65,17 +65,23 @@
 
   .sideContain {
     background: #fff;
+    margin-bottom: 1em;
     @extend %box-padding;
   }
   h2 {
     color: $dark-main;
     border-bottom: 2px solid $dark-highlight;
-    margin: 0;
+    margin: 0 0 0.5em;
   }
   ul { 
     list-style: none;
     padding: 0;
     margin: 0;
+  }
+  .sideItem {
+    background: $light-main;
+    margin-bottom: 0.25em;
+    padding: 0.5em;
   }
 }
 
