@@ -7,11 +7,11 @@ import Sidebar from '../components/sidebar'
 
 export async function getStaticProps({ params }) {
   const postData = await getPostData(params.id)
-  const allPostsData = getSortedPostsData()
+  const somePosts = getSortedPostsData(1)
   return {
     props: {
       postData,
-      allPostsData
+      somePosts
     }
   }
 }
@@ -25,9 +25,9 @@ export async function getStaticPaths() {
 }
 
 
-export default function Post({ postData, allPostsData }) {
+export default function Post({ postData, somePosts }) {
   return (
-    <Layout sideBar={<PageSideBox allPostsData={allPostsData}/>}>
+    <Layout sideBar={<PageSideBox somePosts={somePosts}/>}>
       <Head>
         <title>{postData.title}</title>
       </Head>
@@ -42,13 +42,13 @@ export default function Post({ postData, allPostsData }) {
   )
 }
 
-export function PageSideBox({ allPostsData }) {
+export function PageSideBox({ somePosts }) {
   return (
     <Sidebar>
       <div className={utilStyles.sideContain}>
         <h2>Recent Posts</h2>
         <nav><ul>
-          {allPostsData.map(({ id, title }) => (
+          {somePosts.map(({ id, title }) => (
             <li className={utilStyles.sideItem} key={id}>{title}</li>
           ))}
         </ul></nav>
