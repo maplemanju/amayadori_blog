@@ -55,11 +55,6 @@
   @extend %box-padding;
 }
 
-.sidebar {
-  width: 30%;
-  padding-left: 30px;
-}
-
 @media only screen and (max-width: $tablet2) {
   .mainContainer {
     flex-direction: column;
@@ -67,9 +62,5 @@
   .main {
     width: 100%;
     margin-bottom: 2.5em;
-  }
-  .sidebar {
-    width: 100%;
-    padding: 0;
   }
 }

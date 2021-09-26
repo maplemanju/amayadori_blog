@@ -8,11 +8,11 @@ import Link from 'next/link'
 
 export async function getStaticProps({ params }) {
   const postData = await getPostData(params.id)
-  const somePosts = getSortedPostsData(1)
+  const recentPost = getSortedPostsData(1)
   return {
     props: {
       postData,
-      somePosts
+      recentPost
     }
   }
 }
@@ -26,9 +26,9 @@ export async function getStaticPaths() {
 }
 
 
-export default function Post({ postData, somePosts }) {
+export default function Post({ postData, recentPost }) {
   return (
-    <Layout sideBar={<PageSideBox somePosts={somePosts}/>}>
+    <Layout sideBarData={recentPost}>
       <Head>
         <title>{postData.title}</title>
       </Head>
@@ -40,22 +40,5 @@ export default function Post({ postData, somePosts }) {
         <div dangerouslySetInnerHTML={{ __html: postData.contentHtml }} />
       </article>
     </Layout>
-  )
-}
-
-export function PageSideBox({ somePosts }) {
-  return (
-    <Sidebar>
-      <div className={utilStyles.sideContain}>
-        <h2>Recent Posts</h2>
-        <nav><ul>
-          {somePosts.map(({ id, title }) => (
-            <li className={utilStyles.sideItem} key={`recent-${id}`}>
-              <Link href={`/${id}`}><a>{title}</a></Link>
-            </li>
-          ))}
-        </ul></nav>
-      </div>
-    </Sidebar>
   )
 }

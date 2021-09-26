@@ -8,7 +8,7 @@ import Sidebar from './sidebar'
 const name = 'Amayadori'
 export const siteTitle = 'Amayadori Blog'
 
-export default function Layout({ children, sideBar }) {
+export default function Layout({ children, sideBarData }) {
   return (
     <div className={styles.appBody}>
       <Head>
@@ -32,7 +32,7 @@ export default function Layout({ children, sideBar }) {
           {children}
         </main>
 
-        {sideBar ? sideBar : <Sidebar/>}
+        <Sidebar recentPost={sideBarData} />
       </div>
       <Footer/>
     </div>

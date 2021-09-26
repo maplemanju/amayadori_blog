@@ -9,14 +9,14 @@ import Sidebar from '../../components/sidebar'
 import useCategories from '../../components/categories'
 
 
-const Cat = ({allPostsData, somePosts}) => {
+const Cat = ({allPostsData, recentPost}) => {
   const router = useRouter()
   const { cat } = router.query
   const categories = useCategories()
   const category = categories.find(category => category.id === cat).label
 
   return (
-    <Layout sideBar={<PageSideBox somePosts={somePosts}/>}>
+    <Layout sideBarData={recentPost}>
       <Head>
         <title>{category}</title>
       </Head>
@@ -45,30 +45,13 @@ const Cat = ({allPostsData, somePosts}) => {
   )
 }
 
-export function PageSideBox({ somePosts }) {
-  return (
-    <Sidebar>
-      <div className={utilStyles.sideContain}>
-        <h2>Recent Posts</h2>
-        <nav><ul>
-          {somePosts.map(({ id, title }) => (
-            <li className={utilStyles.sideItem} key={`recent-${id}`}>
-            <Link href={`/${id}`}><a>{title}</a></Link>
-            </li>
-          ))}
-        </ul></nav>
-      </div>
-    </Sidebar>
-  )
-}
-
 export async function getStaticProps() {
   const allPostsData = getSortedPostsData()
-  const somePosts = getSortedPostsData(1)
+  const recentPost = getSortedPostsData(1)
   return {
     props: {
       allPostsData,
-      somePosts
+      recentPost
     }
   }
 }
