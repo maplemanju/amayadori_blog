@@ -52,7 +52,10 @@
     padding: 0;
     margin: 0;
   }
-  .sideItem {
+  .sideItem > a {
+    display: block;
+    border: none;
+    color: inherit;
     background: $light-main;
     margin-bottom: 0.25em;
     padding: 0.5em;

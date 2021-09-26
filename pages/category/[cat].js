@@ -52,7 +52,9 @@ export function PageSideBox({ somePosts }) {
         <h2>Recent Posts</h2>
         <nav><ul>
           {somePosts.map(({ id, title }) => (
-            <li className={utilStyles.sideItem} key={id}>{title}</li>
+            <li className={utilStyles.sideItem} key={`recent-${id}`}>
+            <Link href={`/${id}`}><a>{title}</a></Link>
+            </li>
           ))}
         </ul></nav>
       </div>
