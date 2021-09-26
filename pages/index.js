@@ -4,6 +4,7 @@ import utilStyles from '../styles/utils.module.scss'
 import { getSortedPostsData } from '../lib/posts'
 import Link from 'next/link'
 import Date from '../components/date'
+import Sidebar from '../components/sidebar'
 
 export async function getStaticProps() {
   const allPostsData = getSortedPostsData()
@@ -16,7 +17,7 @@ export async function getStaticProps() {
 
 export default function Home({ allPostsData }) {
   return (
-    <Layout home>
+    <Layout sideBar={<PageSideBox allPostsData={allPostsData}/>}>
       <Head>
         <title>{siteTitle}</title>
       </Head>
@@ -41,5 +42,20 @@ export default function Home({ allPostsData }) {
         </ul>
       </section>
     </Layout>
+  )
+}
+
+export function PageSideBox({ allPostsData }) {
+  return (
+    <Sidebar>
+      <div className={utilStyles.sideContain}>
+        <h2>Recent Posts</h2>
+        <nav><ul>
+          {allPostsData.map(({ id, title }) => (
+            <li className={utilStyles.sideItem} key={id}>{title}</li>
+          ))}
+        </ul></nav>
+      </div>
+    </Sidebar>
   )
 }

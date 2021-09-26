@@ -1,14 +1,17 @@
 import Layout from '../components/layout'
 import Head from 'next/head'
-import { getAllPostIds, getPostData } from '../lib/posts'
+import { getAllPostIds, getPostData, getSortedPostsData } from '../lib/posts'
 import Date from '../components/date'
 import utilStyles from '../styles/utils.module.scss'
+import Sidebar from '../components/sidebar'
 
 export async function getStaticProps({ params }) {
   const postData = await getPostData(params.id)
+  const allPostsData = getSortedPostsData()
   return {
     props: {
-      postData
+      postData,
+      allPostsData
     }
   }
 }
@@ -21,9 +24,10 @@ export async function getStaticPaths() {
   }
 }
 
-export default function Post({ postData }) {
+
+export default function Post({ postData, allPostsData }) {
   return (
-    <Layout>
+    <Layout sideBar={<PageSideBox allPostsData={allPostsData}/>}>
       <Head>
         <title>{postData.title}</title>
       </Head>
@@ -35,5 +39,20 @@ export default function Post({ postData }) {
         <div dangerouslySetInnerHTML={{ __html: postData.contentHtml }} />
       </article>
     </Layout>
+  )
+}
+
+export function PageSideBox({ allPostsData }) {
+  return (
+    <Sidebar>
+      <div className={utilStyles.sideContain}>
+        <h2>Recent Posts</h2>
+        <nav><ul>
+          {allPostsData.map(({ id, title }) => (
+            <li className={utilStyles.sideItem} key={id}>{title}</li>
+          ))}
+        </ul></nav>
+      </div>
+    </Sidebar>
   )
 }

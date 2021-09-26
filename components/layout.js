@@ -8,7 +8,7 @@ import Sidebar from './sidebar'
 const name = 'Amayadori'
 export const siteTitle = 'Amayadori Blog'
 
-export default function Layout({ children, home }) {
+export default function Layout({ children, sideBar }) {
   return (
     <div className={styles.appBody}>
       <Head>
@@ -32,7 +32,7 @@ export default function Layout({ children, home }) {
           {children}
         </main>
 
-        <Aside/>
+        {sideBar ? sideBar : <Sidebar/>}
       </div>
       <Footer/>
     </div>
@@ -74,11 +74,5 @@ function Footer() {
     <footer className={styles.footer}>
       <div className={styles.container}>© {currentYear} Amayadori.cloud</div>
     </footer>
-  )
-}
-
-function Aside() {
-  return(
-    <Sidebar/>
   )
 }

@@ -49,10 +49,6 @@
   margin: 2em auto;
 }
 
-%box-padding {
-  padding: 1.5em 2.5em;
-}
-
 .main {
   width: 70%;
   background: #fff;
@@ -62,27 +58,6 @@
 .sidebar {
   width: 30%;
   padding-left: 30px;
-
-  .sideContain {
-    background: #fff;
-    margin-bottom: 1em;
-    @extend %box-padding;
-  }
-  h2 {
-    color: $dark-main;
-    border-bottom: 2px solid $dark-highlight;
-    margin: 0 0 0.5em;
-  }
-  ul { 
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
-  .sideItem {
-    background: $light-main;
-    margin-bottom: 0.25em;
-    padding: 0.5em;
-  }
 }
 
 @media only screen and (max-width: $tablet2) {
