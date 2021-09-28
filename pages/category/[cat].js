@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import Layout from '../../components/layout'
+import Layout, {siteTitle} from '../../components/layout'
 import { useRouter } from 'next/router'
 import { getSortedPostsData } from '../../lib/posts'
 import utilStyles from '../../styles/utils.module.scss'
@@ -18,8 +18,11 @@ const Cat = ({allPostsData, recentPost}) => {
   return (
     <Layout sideBarData={recentPost}>
       <Head>
-        <title>{category}</title>
+        <title>{category} | { siteTitle }</title>
       </Head>
+      <section>
+      <h1 className={utilStyles.arcTitle}>{category}</h1>
+      </section>
       <section>
         <ul className={utilStyles.blogList}>
           {allPostsData.filter(({category}) => category === cat).map(({ id, date, title, summary }) => {
@@ -47,7 +50,7 @@ const Cat = ({allPostsData, recentPost}) => {
 
 export async function getStaticProps() {
   const allPostsData = getSortedPostsData()
-  const recentPost = getSortedPostsData(1)
+  const recentPost = getSortedPostsData(3)
   return {
     props: {
       allPostsData,

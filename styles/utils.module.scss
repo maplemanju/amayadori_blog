@@ -24,7 +24,7 @@
 }
 
 .lightText {
-  color: #666;
+  color: #888;
 }
 
 .headingStyle1, .headingStyle1 * {
@@ -32,8 +32,32 @@
   font-size: 1.5rem;
   border: 0;
   background: 0;
-  margin-top: 0;
+  margin: 0;
   a:hover {
     color: $dark-highlight;
   }
+}
+
+.tagStyle {
+  background: none;
+  border: 0;
+  margin: 0 1em;
+  color: #888;
+}
+
+.arcTitle {
+  font-family: Courier New,monospace;
+  font-size: 2.5em;
+  margin: 0;
+  color: $light-accent;
+  border-bottom: dashed $main 2px;
+  text-shadow: 
+    -1px -1px 1px $dark-highlight, 
+    2px 2px 1px $dark-highlight, 
+    -1px 0px 1px $dark-highlight, 
+    1px 1px 1px $dark-highlight;
+  line-height: normal;
+  padding-bottom: 1rem;
+
+  //text-shadow: -2px -2px 1px #e69595, -2px 2px 1px #e69595, 2px -2px 1px #e69595, 2px 2px 1px #e69595;
 }

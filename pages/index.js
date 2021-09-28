@@ -5,10 +5,11 @@ import { getSortedPostsData } from '../lib/posts'
 import Link from 'next/link'
 import Date from '../components/date'
 import Sidebar from '../components/sidebar'
+import useCategories from '../components/categories'
 
 export async function getStaticProps() {
   const allPostsData = getSortedPostsData()
-  const recentPost = getSortedPostsData(1)
+  const recentPost = getSortedPostsData(3)
   return {
     props: {
       allPostsData,
@@ -18,22 +19,28 @@ export async function getStaticProps() {
 }
 
 export default function Home({ allPostsData, recentPost }) {
+  const categories = useCategories()
   return (
     <Layout sideBarData={recentPost}>
       <Head>
-        <title>{siteTitle}</title>
+        <title>{siteTitle} – Nomad Coder Life in Japan</title>
       </Head>
       <section>
         <ul className={utilStyles.blogList}>
-          {allPostsData.map(({ id, date, title, summary }) => (
+          {allPostsData.map(({ id, date, title, summary, category }) => (
             <li className={utilStyles.listItem} key={id}>
               <h2 className={utilStyles.headingStyle1}>
               <Link href={`/${id}`}>
                 <a>{title}</a>
               </Link>
               </h2>
-              <div className={utilStyles.lightText}>
-                <Date dateString={date} />
+              <div>
+                <span className={utilStyles.lightText}>
+                  <Date dateString={date} />
+                </span>
+                <Link href={`/category/${category}`}>
+                  <a className={utilStyles.tagStyle}>{categories.find(cat => cat.id === category).label}</a>
+                </Link>
               </div>
               <p>{summary}</p>
               <Link href={`/${id}`}>
