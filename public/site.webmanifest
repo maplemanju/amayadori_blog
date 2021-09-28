@@ -1,0 +1,19 @@
+{
+    "name": "Amayadori Blog",
+    "short_name": "Amayadori",
+    "icons": [
+        {
+            "src": "/logo/android-chrome-192x192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "/logo/android-chrome-384x384.png",
+            "sizes": "384x384",
+            "type": "image/png"
+        }
+    ],
+    "theme_color": "#e2edda",
+    "background_color": "#e2edda",
+    "display": "standalone"
+}

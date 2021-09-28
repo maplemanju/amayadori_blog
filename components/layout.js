@@ -25,6 +25,14 @@ export default function Layout({ children, sideBarData }) {
         />
         <meta name="og:title" content={siteTitle} />
         <meta name="twitter:card" content="summary_large_image" />
+        
+        <link rel="apple-touch-icon" sizes="180x180" href="/logo/apple-touch-icon.png"/>
+        <link rel="icon" type="image/png" sizes="32x32" href="/logo/favicon-32x32.png"/>
+        <link rel="icon" type="image/png" sizes="16x16" href="/logo/favicon-16x16.png"/>
+        <link rel="manifest" href="/site.webmanifest"/>
+        <link rel="mask-icon" href="/logo/safari-pinned-tab.svg" color="#5bbad5"/>
+        <meta name="msapplication-TileColor" content="#e2edda"/>
+        <meta name="theme-color" content="#e2edda"/>
       </Head>
       <Header/>
       <div className={styles.mainContainer}>
