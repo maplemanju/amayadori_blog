@@ -32,6 +32,8 @@ export default function Post({ postData, recentPost }) {
     <Layout sideBarData={recentPost}>
       <Head>
         <title>{postData.title} | { siteTitle }</title>
+        <meta name="description" content={postData.summary}/>
+        <meta name="og:description" content={postData.summary} />
       </Head>
       <article className={styles.content}>
         <h1 className={utilStyles.headingStyle1}>{postData.title}</h1>

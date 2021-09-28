@@ -1,30 +1,34 @@
 import Head from 'next/head'
 import Image from 'next/image'
+import { useEffect } from "react";
 import styles from './layout.module.scss'
 import utilStyles from '../styles/utils.module.scss'
 import Link from 'next/link'
 import Sidebar from './sidebar'
 
 export const siteTitle = 'Amayadori'
+export const siteDesc = 'My name is Maya and I am a nomad web engineer living in Japan.'
 
 export default function Layout({ children, sideBarData }) {
+  const homeDesc = `Blogs about Coding, Lifestyle, Games, Manga and other nerdy things from Japan! ${siteDesc}`
+  let homeSrc;
+  if (typeof window !== 'undefined') {
+    homeSrc = window.location.origin
+  }
+  
   return (
     <div className={styles.appBody}>
       <Head>
         <link rel="icon" href="/favicon.ico" />
-        <meta
-          name="description"
-          content="Learn how to build a personal website using Next.js"
-        />
-        <meta
-          property="og:image"
-          content={`https://og-image.vercel.app/${encodeURI(
-            siteTitle
-          )}.png?theme=light&md=0&fontSize=75px&images=https%3A%2F%2Fassets.vercel.com%2Fimage%2Fupload%2Ffront%2Fassets%2Fdesign%2Fnextjs-black-logo.svg`}
-        />
-        <meta name="og:title" content={siteTitle} />
-        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="description" content={homeDesc} />
         
+        <meta name="og:title" content={siteTitle} />
+        <meta name="og:description" content={homeDesc} />
+        <meta property="og:image" content={`${homeSrc}/images/profile.png`}/>
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:site" content="@amayadoring" />
+        <meta name="twitter:creator" content="@amayadoring" />
+
         <link rel="apple-touch-icon" sizes="180x180" href="/logo/apple-touch-icon.png"/>
         <link rel="icon" type="image/png" sizes="32x32" href="/logo/favicon-32x32.png"/>
         <link rel="icon" type="image/png" sizes="16x16" href="/logo/favicon-16x16.png"/>
