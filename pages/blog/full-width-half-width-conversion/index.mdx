@@ -1,0 +1,67 @@
+import BlogLayout from '../../../components/blog-layout'
+
+export const meta = {
+  title: 'Converting between Full-Width and Half-Width Characters',
+  date: '2021-09-22',
+  category: 'coding',
+  summary: `Difference between Full-Width and Half-Width Characters. See how to convert between the two.`
+}
+
+export default ({ children }) => <BlogLayout meta={meta}>{children}</BlogLayout>
+
+Most of us in the English speaking world would most likely have never heard of full-width and half-width characters. As we type on our screen, we produce single byte characters. For others (esp CJK), single byte isn’t the norm since their characters do not fit on one, they need double byte.
+
+> For CJK countries, characters such as Kanji and Hiragana are double byte, but because of globalization, they need to add roman letters. Thus making the weird existence we have now which are double-byte alphanumeric roman characters.
+
+## What are Full-width and Half-width characters?
+
+You might be wondering why a single byte is called half-width and not full-width, and maybe make the double byte to be called double-width instead. Imagine a square, a full-width character occupies this whole square while half-width characters are half of it, hence where the naming comes from.
+
+**Full-Width characters** are contained in two bytes, occupies a full-width square, and are mostly used by CJK languages.
+
+**Half-Width characters** are one byte, mostly half the size of a full-width, and are used by roman letter languages.
+
+```
+"ａｂｃｄｅｆｇ＋！１２３" //full-width
+"abcdefg+!123" // half-width
+```
+
+## From Full-Width to Half-Width
+
+To convert full-width to half-width characters, use replace to all the full-width characters with counterpart conversions. These characters are from `！` to `～`
+
+Replace the string’s character codes by **subtracting** `0xfee0` to the character code.
+
+```
+// let "e" be a text input element
+
+//replacing half-width's character code
+function convertToHalf(e) {
+  e.value = e.value.replace(/[！-～]/g, halfwidthChar =>
+String.fromCharCode(halfwidthChar.charCodeAt(0) - 0xfee0));
+}
+
+// or a shorter version using normalize 
+function convertToHalf(e) {
+  e.value = e.value.normalize('NFKC');
+}
+```
+
+## From Half-Width to Full-Width
+
+To convert half-width to full-width characters, use replace to all the half-width characters with counterpart conversions. These characters are from `!` to `~`
+
+Replace the string’s character codes by **adding** `0xfee0` to the character code.
+
+```
+function convertToFull(e) {
+  e.value = e.value.replace(/[!-~]/g, fullwidthChar =>
+String.fromCharCode(fullwidthChar.charCodeAt(0) + 0xfee0));
+}
+```
+
+## Where is this Used?
+
+Character width conversion is needed when working on CJK websites most especially on web forms. Since full width and half width characters are essentially different strings, it’s not very ideal to have both entries on the database. It is better to set a limitation to web form users to only use one.
+
+As for which to use, it depends on the company. Some require full-width on their telephone and address data, while some asks for half-width. One way of avoiding both entries is validating the input entries, but it’s always better for the users if they can fill in forms without fixing their keyboard settings by automatically converting between half-width and full-width with Javascript.

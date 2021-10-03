@@ -1,0 +1,34 @@
+import BlogLayout from '../../../components/blog-layout'
+
+export const meta = {
+  title: 'Text UI on Japanese Website: Practices for best readability',
+  date: '2021-07-28',
+  category: 'coding',
+  summary: `Typography contributes to a website’s readability. Having a good web typography will let visitors have a better time on your site. There are ways and common practices to increase a Japanese web pages readability with typography.`
+}
+
+export default ({ children }) => <BlogLayout meta={meta}>{children}</BlogLayout>
+
+Typography contributes to a website’s readability. Having a good web typography will let visitors have a better time on your site. There are ways and common practices to increase a Japanese web pages readability with typography.
+
+## Paragraph and overall texts
+
+The minimum **font-size** for common texts should be 16px, which is why the font-size:16px is set on the body. the reason for this is that unlike English letters, Japanese characters have more strokes and details. A bigger font size will make them more readable, so make sure to set paragraph size to not less than 16px.
+
+The availability of **font-family** for Japanese characters greatly varies depending on the device’s OS. Because of this, setting it to sans-serif or serif to use the device’s default font is ideal. To learn more about different Japanese fonts readily available on different platforms, read the post [All About Japanese Font Family](/blog/japanese-font-family).
+
+For the text **color**, avoid over contrasting of paragraph text such as #000 font on a #fff background to avoid eye strain. Try #333 for white backgrounds.
+
+**Line-height** and paragraph **margins** are important to avoid text crowding. Unlike books, webpages are most of the time browsed quickly by the visitors in search for information. Adding big enough spaces will let them browse through easier.
+
+```
+body {
+  font-size: 16px;
+  font-family: sans-serif;
+  line-height: 1.8;
+  color: #333;
+}
+p {
+ margin-bottom: 1.5rem;
+}
+```

@@ -1,0 +1,82 @@
+import BlogLayout from '../../../components/blog-layout'
+
+export const meta = {
+  title: 'Auto fill Japanese address from zip code with AjaxZip3',
+  date: '2021-07-27',
+  category: 'coding',
+  summary: `AjaxZip3 is javascript library that helps with implementing Japan address automation on web forms in the easiest way without needing to download zip code data.`
+}
+
+export default ({ children }) => <BlogLayout meta={meta}>{children}</BlogLayout>
+
+Japanese web forms have a very handy address fields which automatically generates the address upon entering the zip code. Not only that it helps users by automatically filling up their address, but it also greatly helps the user from avoiding mistakes on both filling up the address and zip code.
+
+[AjaxZip3](https://github.com/ajaxzip3/ajaxzip3.github.io) is javascript library that helps with implementing Japan address automation on web forms in the easiest way without needing to download zip code data. Setting up is as easy as adding an external JS file and calling in the function using **any event** on the zip code field.
+
+>It is strongly recommended to implement address autofill on any Japanese web form.
+
+If you’re familiar and used to filling up web forms in Japan, it’s noticeable that there are very few web forms that does not automatically generate the address from zip code. As a user, I get disappointed when I find one since I always expect my address to be autofilled.
+
+**YuubinBango** is a similar and newer library. It uses classes to setup the form making it easier and cleaner to implement. The downside of this library is that it cannot use your preferred event and it only use *onkeyup*. To implement, read [Auto fill Japanese address from zip code with YubinBango](/blog/auto-fill-japan-address-yubinbango).
+
+On the other hand, please use AjaxZip3 and continue reading below if you want the address to be autofilled only after a button click or any other event than *onkeyup*.
+
+## How to implement AjaxZip3
+
+1. Insert the following script to your document.
+
+```
+<script src="https://ajaxzip3.github.io/ajaxzip3.js" charset="UTF-8"></script>
+```
+
+2. Ready your html form fields and take note of their names.
+
+AjaxZip3 supports separated or combined address fields. For the example below, 2 zip code fields and 3 address fields are used.
+
+```
+// Zip entry field is divided into two, namely zip and zip2.
+<input type="text" name="zip1" size="4" maxlength="3">－<input type="text" name="zip2" size="5" maxlength="4">
+// Prefecture
+<input type="text" name="pref" size="40">
+// City or Municipality
+<input type="text" name="address1" size="40">
+// The rest of the address such as street and town
+<input type="text" name="address2" size="40">
+```
+
+3. Add onkeyup on the second zip input tag to call the js function. Match the name of the fields to use as parameter values on the function.
+
+```
+onKeyUp="AjaxZip3.zip2addr('zip1','zip2','pref','address1','address2');"
+```
+
+## Parameters of AjaxZip3
+
+The function above accepts 6 parameter values total and a minimum of 3.
+
+```
+AjaxZip3.zip2addr('zip1','zip2','prefecture','city','town','remaining_address');
+```
+
+The first parameter, *zip1* is the first 3 numbers of a zip code while the second parameter, *zip2* is the 4 remaining numbers.
+
+From the third parameter is where the address startsーthe third is prefecture, the fourth is city, the fifth is town, and the last parameter is all the remaining address.
+
+>The last parameter is unnecessary as most of the address generated from the zip code calculation does not have a return value for it. It is safe to omit the last parameter, and if it exist, it will just combine with the 5th value.
+
+## Customizing the form fields and the return values of AjaxZip3
+
+By editing the function’s parameter, the values can be customized and combined together.
+
+The zip code can be combined to one value by setting the 2nd parameter to blank, and the address starting from third parameter can be combined to one field by entering the same field *name* on the 3rd and 4th parameter.
+
+```
+AjaxZip3.zip2addr('zip','','address','address');
+```
+
+The code above will only need one field for zip code, and one field for address.
+
+```
+<input type="text" name="zip" size="10" maxlength="8" onKeyUp="AjaxZip3.zip2addr('zip','','address','address');">
+<input type="text" name="address" size="40">
+```

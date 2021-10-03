@@ -1,0 +1,93 @@
+import BlogLayout from '../../../components/blog-layout'
+
+export const meta = {
+  title: 'Japanese Web Form: Common Fields and Practices',
+  date: '2021-08-01',
+  category: 'coding',
+  summary: `Japanese web form have a unique set of fields and rules to adapt to the entry values accordingly. Following these standard web form UI practices will allow for a better user experience which is needed to dive in to the Japanese web market.`
+}
+
+export default ({ children }) => <BlogLayout meta={meta}>{children}</BlogLayout>
+
+Japanese web form have a unique set of fields and rules to adapt to the entry values accordingly. Following these standard web form UI practices will allow for a better user experience which is needed to dive in to the Japanese web market.
+
+## Name
+Japanese names starts their name with their family name, then their given name comes after. If the name form is separated into two, always start with the lastname field.
+
+**Furigana fields** are needed because Japanese names have multiple ways of reading. By adding furigana, the service staff will be able know the correct way to read the customer’s name.
+
+Romaji literally means roman letters. This field will show how the customer’s name is written using the Latin alphabet that is globally recognized. This field is optional and needed for services such as credit cards and certificates.
+
+```
+<label>お名前 (Name)</label>
+<div>
+  姓 <input type="text" placeholder="山田">
+  名 <input type="text" placeholder="太郎">
+</div>
+
+<label>フリガナ (Furigana)</label>
+<div>
+  セイ <input type="text" placeholder="ヤマダ" pattern="[ァ-ン]" title="Katana only">
+  メイ <input type="text" placeholder="タロウ" pattern="[ァ-ン]" title="Katana only">
+</div>
+
+<label>ローマ字 (Romaji)</label>
+<div>
+  Sei <input type="text" placeholder="Yamada" pattern="[a-zA-Z]" title="English Letters only">
+  Mei <input type="text" placeholder="Taro" pattern="[a-zA-Z]" title="English Letters only">
+</div>
+```
+
+## Dates and Birthdate
+
+Dates in Japan are on the year-month-day format:
+
+```
+date("Y年m月d日")
+```
+
+For the dates on forms or anywhere on the web, **always add the labels namely 年 for year, 月 for month, and 日 for day**. Using a dot or dash to indicate date can be confusing because of the different way of reading per country, and since Japan only have one character to label them unlike english its best to take advantage of it.
+
+**Always make the year field selectable** instead of text input. This is because Japan have two ways to indicate year. One being more common is the Japanese calendar years (e.g. 平成５年) and the other is the global Gregorian calendar years (e.g. 1993). Both are learned and practiced in Japan but most paper forms are requiring the Japanese format while web forms uses the Gregorian format. Since we don’t want different submitted values on the calendar, it’s best to make it selectable for better control and uniformity.
+
+```
+<label>生年月日 (Birthday)</label>
+<select id="birthyear">
+  <option value="" selected></option>
+  <option value="2000">2000</option>
+  <option value="1999">1999</option>
+</select>年
+<input type="text" maxlength="2" placeholder="1">月
+<input type="text" maxlength="2" placeholder="1">日
+```
+
+## Phone number
+Japanese geographical telephones have **three parts with** a fixed length of 10 digits, while mobile phones have 11 digits (both including initial 0).
+
+The **third part** or last field of phone numbers always have 4 digits no matter what.
+
+The **first part** is for the area code. For geographic numbers, area code ranges from 2 to 5 digits. Mobile phones have fixed 3 digit area codes which are: 070, 080 and 090.
+
+The **second part** can have a length of 1 to 4 digits. Since the the last field of phone number is fixed to 4 digits, the length of the second field completely depends on how many numbers are there on the area code. For example, if the area code have 2 digits, the second field will contain 4 digits (xx xxxx xxxx). If the area code have 3 digits, the second field will have 3 digits (xxx xxx xxxx) and so on. Mobile number on the other hand have a fixed length of 4 digits here.
+
+The reason why Japanese forms always divide their telephone field box to three is to better control the above mentioned conditions. Another reason is of course dividing the fields is better for visibility, making it easier to spot mistakes on the numbers typed in by the users.
+
+Phone numbers can have an overwhelming amount of conditions that has to be made on the backend validation which is mostly not worth the time to make for a single input. In these cases, the minimum amount of restrictions can be made on HTML.
+
+```
+<input type="text" maxlength="5" pattern="[0-9]{2,5}" placeholder="090">－
+<input type="text" maxlength="4" pattern="[0-9]{1,4}" placeholder="1234">－
+<input type="text" maxlength="4" pattern="[0-9]{4}" placeholder="1234">
+```
+
+With the *pattern* attribute, we can add restrictions of the entered value using regex. All input accept numbers only, the first input with 2 to 5 length, the second accepts 1 to 4 length, and the third only accepts 4 length of numbers.
+
+## Address
+
+The address format in Japan starts from the biggest location to the most specific one.
+
+The **zip code** is always first. To indicate zip code number, the symbol 〒 is used in front such as *〒100-0010*. The number format after the symbol is 3 digits, a dash, then 4 digits at the end, for a total of 7 digit in length. The reason for diving the zip code field into two is so that the users will only have to enter numbers. Having a single field will have two different entries from users: some with dash and some without.
+
+Most of the time, entry forms have 2 address fields. One is for the prefecture, city and districts, and the 2nd line is the house number or building and apartment number. However, this can be combined or even divided into more specific fields.
+
+Each address are paired with their zip codes, so it is possible to automatically generate addresses from them. Adding a database for zip code address automation are not ideal, but a javascript library of it was released publicly so all web forms in Japan now adapts it. It is very convenient to have for both the users and the administrators so this is a **must to install** on your Japanese web form. To learn more, read [Auto fill Japanese address from zip code with AjaxZip3](auto-fill-japan-address-from-zipcode).

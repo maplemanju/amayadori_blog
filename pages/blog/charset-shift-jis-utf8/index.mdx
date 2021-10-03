@@ -1,0 +1,57 @@
+import BlogLayout from '../../../components/blog-layout'
+
+export const meta = {
+  title: 'Japanese Character Encoding: Shift JIS and UTF-8',
+  date: '2021-08-04',
+  category: 'coding',
+  summary: `Learn about Japanese character encodings, Shift JIS and UTF-8.`
+}
+
+export default ({ children }) => <BlogLayout meta={meta}>{children}</BlogLayout>
+
+There are several Japanese character encoding, but Shift JIS and UTF-8 are the two important ones.
+
+Offshore developers from Japanese company will for sure face the problem of garbled characters. They will most likely send files encoded in Shift JIS because that is how Japanese devices generate files. When opening on a non-japanese device, sometimes instead of question marks and symbols, the garbled characters turn into a different Chinese character. In this case, for developers who doesn’t speak any Japanese, it is almost impossible tell if they’re garbled or not until the client sees it.
+
+>Thankfully, on the web, HTML5 encourages the use of UTF-8 charset and viewing different characters on the web are not a problem anymore.
+
+## What is Shift JIS?
+
+Shift JIS (SJIS) is an encoding system for Japanese Characters. Most devices in Japan are Shift-JIS compatible, and **Windows devices in particular outputs files with a Shift-JIS encoding**.
+
+When opening a text, csv, doc, xmls file received from a Japanese client, the characters will most likely appear garbled that is because devices outside Japan are not Shift-JIS compatible.
+
+### How to view a Shift JIS encoded file
+
+Different editors have different ways to view Shift JIS. For this guide, Sublime Text 3 will be used.
+
+1. On sublime, go to package control and choose install package.
+
+2. On the package list, search and install ConvertToUTF8.
+3. Download [Codecs33](https://github.com/seanliang/Codecs33/tree/osx) zip file
+4. On Sublime, go to **preferences > browse package** to open the packages folder.
+5. Add the unzipped Codecs33 here. Make sure to rename the folder to Codecs33.
+6. Restart Sublime and open your Shift JIS encoded file.
+
+On the file menu, this will be visible after the package installation. ConvertToUTF8 package allows reading, editing and saving files to Shift JIS.
+
+## UTF-8 for Japanese character encoding
+
+UTF-8 is compatible on any devices worldwide. It contains all possible characters resulting in larger set of values per character compared to single language based encoding such as Shift JIS. Most non-english websites now have a UTF-8 charset on HTML as it solves character problems.
+
+Japanese Mac devices uses and generates files in UTF-8. All smartphone and modern devices in Japan are also compatible with UTF-8, but the older phone models does not.
+
+UTF-8 is the recommended character encoding for most files for uniform output and global code sharing. However, non-technical clients will most likely provide files in Shift JIS so it’s inevitable and necessary to be able to support this on your environment.
+
+### Convert Shift JIS to UTF-8 with PHP
+
+When receiving Shift JIS file and the desired output is in UTF-8, the conversion is possible in the backend. For opposite conversion, just switch the two parameters.
+
+```
+mb_convert_encoding($str, "UTF-8", "SJIS");
+```
+
+## Which should you use, Shift JIS or UTF-8
+It is strongly recommended to use UTF-8 for generating any type of file. UTF-8 is universally compatible, there is no need for extra installation just to view the characters. Shift-JIS works if the company is Japanese only operated, and only deals with Japanese customers.
+
+Generating files on Shift-JIS for a Japanese company with foreign developers or customers doesn’t have any important benefits. However, it is important to be able to support Shift-JIS when working for a Japanese company as it will be often encountered.

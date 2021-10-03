@@ -1,0 +1,110 @@
+import BlogLayout from '../../../components/blog-layout'
+
+export const meta = {
+  title: 'All about Japanese Font Family',
+  date: '2021-07-29',
+  category: 'coding',
+  summary: `Japanese sans-serif fonts are called Gothic (ゴシック), while serif fonts are Mincho (明朝). Their difference are that of Mincho being stylized at the end of strokes while Gothic have even thickness.`
+}
+
+export default ({ children }) => <BlogLayout meta={meta}>{children}</BlogLayout>
+
+Japanese sans-serif fonts are called Gothic (ゴシック), while serif fonts are Mincho (明朝). Their difference are that of Mincho being stylized at the end of strokes while Gothic have even thickness.
+
+Japanese font-family can be hard to search for while figuring out all their differences and whether they are still supported. Because different OS have different available fonts, it is especially hard to check for how they are displayed on your website.
+
+Here are a list of all available Japanese fonts on different OS with their release dates and images for easy comparison without viewing from another device.
+
+## Sans-serif / Gothic
+
+### Windows
+
+#### Meiryo / メイリオ (2007)
+Meiryo is the default Japanese Windows system font as of Windows Vista release. This is also the fallback sans-serif font.
+
+#### Meiryo UI (2007)
+
+#### Yu Gothic / 游ゴシック (2013) {#yu-gothic}
+Yu Fonts are characterized by the lightness of its appearance. This is because of its thin strokes and smaller characters that opens up more space in between. Yu Fonts are the only font available on both Windows and macOS platforms.
+
+#### MS UI Gothic (1998)
+
+#### MS PGothic / ＭＳ Ｐゴシック (1995)
+
+#### MS Gothic / ＭＳ ゴシック (1992)
+
+MS Gothic Fonts are the former default font of Windows systems. They are visibly less smoother so it’s better to avoid them specially on modern displays.
+
+### macOS
+
+#### Hiragino Sans / ヒラギノ角ゴシック (2015) {#Hiragino-sans}
+
+Hiragino Sans is the default Japanese font on macOS and also the fallback font of sans-serif. It is styled similarly to Hiragino Kaku Gothic ProN but is new and improved.
+
+Add W0 to W9 at the end to adjust the thickness being W9 as the thickest. If not specified, P tags are default to W4 thickness while headings range from W1-W6.
+
+#### Hiragino Kaku Gothic ProN / ヒラギノ角ゴ ProN (2001/2007) {#HiraKakuProN}
+
+Adding `W6` or `Std W8` at the end will make it thicker.
+
+#### Hiragino Maru Gothic ProN / ヒラギノ丸ゴ ProN (2001/2007) {#HiraMaruProN}
+
+This font have noticeably rounder strokes.
+
+#### YuGothic (2013)
+
+See Yu Gothic on Windows for more details.
+
+#### Osaka
+
+### iOS
+
+#### Hiragino Sans
+
+See [Hiragino Sans](#Hiragino-sans) on macOS for more details.
+
+#### HiraKakuProN-W3 / HiraKakuProN-W6
+
+Short term for [Hiragino Kaku Gothic ProN](#HiraKakuProN).
+
+#### HiraMaruProN-W4
+
+Short term for [Hiragino Maru Gothic ProN](#HiraMaruProN).
+
+### Android
+
+#### Roboto (2011)
+
+Roboto is the default Japanese font for Android since 2013.
+
+## Serif / Mincho
+
+### Windows
+
+#### Yu Mincho
+See [Yu Gothic](#yu-gothic) on Windows for more details.
+
+#### MS PMincho
+
+#### MS Mincho
+
+### MacOs
+
+#### Hiragino Mincho ProN / ヒラギノ明朝 Pro (2001/2007) {#HiraMinProN}
+
+Add `W6` at the end to make the font thicker.
+
+#### YuMincho / 游明朝体
+
+See [Yu Gothic](#yu-gothic) on Windows for more details.
+
+
+### iOS
+
+#### HiraMinProN-W3 / HiraMinProN-W6
+
+Short term for [Hiragino Mincho ProN](#HiraMinProN).
+
+### Android
+
+Japanese Serif or Mincho fonts are not available on Android devices.

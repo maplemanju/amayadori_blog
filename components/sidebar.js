@@ -12,7 +12,7 @@ export default function Sidebar({ recentPost }) {
         <nav><ul>
           {recentPost.map(({ id, title }) => (
             <li className={styles.sideItem} key={`recent-${id}`}>
-              <Link href={`/${id}`}><a>{title}</a></Link>
+              <Link href={`/blog/${id}`}><a>{title}</a></Link>
             </li>
           ))}
         </ul></nav>

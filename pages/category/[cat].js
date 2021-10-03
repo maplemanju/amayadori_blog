@@ -5,7 +5,6 @@ import { getSortedPostsData } from '../../lib/posts'
 import utilStyles from '../../styles/utils.module.scss'
 import Link from 'next/link'
 import Date from '../../components/date'
-import Sidebar from '../../components/sidebar'
 import useCategories from '../../components/categories'
 
 
@@ -31,7 +30,7 @@ const Cat = ({allPostsData, recentPost}) => {
             return (
             <li className={utilStyles.listItem} key={id}>
               <h2 className={utilStyles.headingStyle1}>
-              <Link href={`/${id}`}>
+              <Link href={`/blog/${id}`}>
                 <a>{title}</a>
               </Link>
               </h2>
@@ -39,7 +38,7 @@ const Cat = ({allPostsData, recentPost}) => {
                 <Date dateString={date} />
               </div>
               <p>{summary}</p>
-              <Link href={`/${id}`}>
+              <Link href={`/blog/${id}`}>
                 <a>Read More »</a>
               </Link>
             </li>)
@@ -51,8 +50,8 @@ const Cat = ({allPostsData, recentPost}) => {
 }
 
 export async function getStaticProps() {
-  const allPostsData = getSortedPostsData()
-  const recentPost = getSortedPostsData(3)
+  const allPostsData = await getSortedPostsData()
+  const recentPost = await getSortedPostsData(3)
   return {
     props: {
       allPostsData,

@@ -1,0 +1,42 @@
+import BlogLayout from '../../../components/blog-layout'
+
+export const meta = {
+  title: 'A strict email address form field UI for better user experience',
+  date: '2021-07-26',
+  category: 'coding',
+  summary: `Implementing Strict email address field, and the pros and cons.`
+}
+
+export default ({ children }) => <BlogLayout meta={meta}>{children}</BlogLayout>
+
+## Email Input
+
+The recommended guidelines for the email input fields on a form are as follows:
+
+- Add a second email address field. This is to ask for the email address the second time allowing the users to type in their email address again to avoid potential mistakes and typo.
+- Separate the input field for the user and the domain of the email address. This makes sure that the user cannot copy and paste the entered email address to the re-enter email field.
+
+## Benefits of strict email address fields
+
+This is recommended for forms that will receive more loss from a user having a wrong email address such official forms and user databases which uses email for important notifications.
+
+Despite how much effort it looks like for the users, this will actually save them more time than getting their email address wrong.
+
+Another benefit of having separated user and domain fields on email address will allow better back end control on email addresses such as blacklisting domains.
+
+## Cons of strict email address fields
+
+Having a strict email address fields requires more effort on the user. Thus, this is not recommended on forms that asks for the quantity of entries such as polls and advertisements.
+
+```
+<label>Email Address</label>
+<div class="email-group">
+  <input type="text" id="email1" name="email1" placeholder="user" value="">
+  <span class="atmark">＠</span>
+  <input type="text" id="email2" name="email2" placeholder="example.com" value="">
+</div>
+<label>Re-enter Email Address</label>
+<div>
+  <input type="text" id="remail" name="remail" placeholder="user@example.com" value="">
+</div>
+```

@@ -1,0 +1,165 @@
+import BlogLayout from '../../../components/blog-layout'
+
+export const meta = {
+  title: 'Real time Validation of Japanese Form with JS / Regex',
+  date: '2021-09-13',
+  category: 'coding',
+  summary: `Real time validation of form is possible because of Javascript. The user will be able to know what was wrong with their input right after they each field and not after clicking the submit button.`
+}
+
+export default ({ children }) => <BlogLayout meta={meta}>{children}</BlogLayout>
+
+## Javascript Real time form validation
+
+Real time validation of form is possible because of Javascript. The user will be able to know what was wrong with their input right after they each field and not after clicking the submit button.
+
+The recommended events for the input fields are *onchange* or *oninput*. **onchange** works better for me since I believe it makes more sense to wait for the user to finish filling in a field and lose cursor focus before judging them if its correct or not. Meanwhile, **oninput** is more fitting on the definition of real-time, as it will really show the validation on every input changes when typing.
+
+I will use classes and add them to each input area to know if they pass the validation such as below:
+
+```
+function checkField(e, pattern) {
+  if(e.value === "") {
+    e.classList.remove("fieldOk");
+    e.classList.remove("fieldNotOk");
+  } else if(pattern.test(e.value)) {
+    e.classList.add("fieldOk");
+    e.classList.remove("fieldNotOk");
+  } else {
+    e.classList.add("fieldNotOk");
+    e.classList.remove("fieldOk");
+  }
+}
+```
+
+The pattern props used above is the regex pattern for validation. To learn the required regex for each fields, continue reading below.
+
+The function above is not enough since all of the fields on our form are composed of 1 or more text inputs, such as first name and last name. We will want to add another check if the combined values passes the final validation.
+
+```
+function checkGroup(fieldRow, name) {
+  // let fieldRow be the field group's parent element
+  // name is taken by removing the number on the field name such as [zip1] and [zip2]
+  const name1 = document.getElementById(`${name}1`);
+  const name2 = document.getElementById(`${name}2`);
+
+  // these 2 let variables will be our final validator
+  // check for empty
+  let emptyField = name1.value === "" || name2.value === "";
+  // check if all fields on the group have[fieldOk] class
+  let matchingField = name1.classList.contains('fieldOk') &&
+        name2.classList.contains('fieldOk');
+
+  if(name==="phone") {
+    const name3 = document.getElementById(`${name}3`);
+    const phone_all = name1.value + name2.value  + name3.value;
+
+    emptyField = name1.value === "" || name2.value === "" || name3.value === "";
+    matchingField = name1.classList.contains('fieldOk') && 
+      name2.classList.contains('fieldOk') && 
+      name3.classList.contains('fieldOk') && 
+      /^\d{10,11}$/.test(phone_all);
+  }
+  if(name==="zip") {
+    const address = document.getElementById(`addr1`);
+
+    matchingField = name1.classList.contains('fieldOk') &&
+      name2.classList.contains('fieldOk') &&
+      address.value !== "";
+  }
+  
+  if(emptyField) {
+    fieldRow.classList.remove("pass");
+    fieldRow.classList.remove("fail");
+    return;
+  }
+  if(matchingField) {
+    fieldRow.classList.add("pass");
+    fieldRow.classList.remove("fail");
+  } else {
+    fieldRow.classList.add("fail");
+    fieldRow.classList.remove("pass");
+  }
+}
+```
+
+This function above adds a pass or fail class on the input group parent.
+
+The `emptyField` checks if one of them is empty, and if its true, it removes both pass and fail class since it means the user is not done filling up yet.
+
+The `matchingField` checks if all text input field in the group have a fieldOk class, plus it also adds conditional checks such as if the phone number combined will total to 10 to 11 digits.
+
+For specifications of each field, read below:
+
+## Name
+Japanese names on forms are often divided into three: *kanji*, *furigana*, and *romaji*. Not all forms require three of these fields to be filled, most often only kanji and furigana, or sometimes just one name field.
+
+> Japanese forms require furigana for their names because Kanji have different ways of reading. And when it comes to names, the way of reading does not follow any grammatical rules or conventions. Furigana is there to let us know how to read them.
+
+### Kanji / Japanese character
+
+The first field is always the name. This field is not labelled Kanji, but simply name (名前). It is not called kanji name because not everyone have a kanji name. Examples are foreigners and also Japanese who have a first name in Hiragana.
+
+Most often a strict form will limit this name field to only Hiragana and Kanji characters.
+
+```
+regex = /^[ぁ-ん一-龯]+$/;
+```
+
+Less stricter forms, and also those without Romaji field allows roman letters.
+
+```
+regex = /^[a-zA-Zぁ-ん一-龯]+$/;
+```
+
+### Furigana
+Furigana is the reading of a given kanji. For the furigana name field, the users have to spell out their name using phonetic characters hiragana or katakana. Either of the two can be used, but most often, forms limit input to one of them for uniformity. Placeholders are often used as example to declare which of it they want the users to use.
+
+```
+katakana_regex = /^[ァ-ン]+$/;
+hiragana_regex = /^[ぁ-ん]+$/;
+```
+
+### Romaji / Roman Letters
+Romaji are the equivalent of their names using Roman letters or the English alphabet. This field is not required and not always present on web forms. Add romaji field only if its a needed data.
+
+```
+letters_only_regex = /^[a-zA-Z]+$/;
+```
+
+## Phone Number
+Phone number field in Japan are most often divided into three between the dashes. This is for better control, and since it’s easy to mistype long number string, this is also for better visibility to avoid input mistakes by the user.
+
+The first 2 fields can have a minimum of 1 digit, and the 3rd field is always 4 digits.
+
+```
+phone_1_2_regex = /^\d+$/;
+phone_3_regex = /^\d{4}$/;
+```
+
+Since Japanese phone numbers can be between 10 to 11 digits, we also add a validation for that by combining the 3 phone number fields.
+
+```
+phone_no = phone_1 + phone_2 + phone_3;
+phone_regex = /^\d{10,11}$/;
+phone_regex.test(phone_no); // returns true if it matches 
+```
+
+## Address
+Address fields in Japan always have automatic address library called **AjaxZip3** or **Yuubinbango**. This works by entering the zip code and it automatically generates address. To learn how to use Yuubinbango and add it to your form, read [Auto fill Japanese address from zip code with YubinBango](/blog/auto-fill-japan-address-yubinbango).
+
+To match this function, first we will limit the count of zip digit value to 3 on the first and 4 on the second field. This can be combined to one field which should be 7 digits exact depending on your preference, but similar to phone number, it’s easier to type long number string separately to avoid mistakes.
+
+```
+zip1_regex = /^\d{3}$/;
+zip2_regex = /^\d{4}$/;
+// or
+zip_regex = /^\d{7}$/;
+```
+
+When checking if each fields have the correct amount of digits, also check if the address string was able to be generated on the address field. If not, it means the zip is wrong.
+
+```
+addressCorrect = zip_regex.test(zip_field.value) &&
+address1_field.value !== "";
+```

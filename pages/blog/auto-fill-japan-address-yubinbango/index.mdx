@@ -1,0 +1,83 @@
+import BlogLayout from '../../../components/blog-layout'
+
+export const meta = {
+  title: 'Auto fill Japanese address from zip code with YubinBango',
+  date: '2021-09-14',
+  category: 'coding',
+  summary: `YubinBango is a JS library for autofilling Japanese address using zip code entry. Implementing was made simple by only assigning classes to the input fields.`
+}
+
+export default ({ children }) => <BlogLayout meta={meta}>{children}</BlogLayout>
+
+**YubinBango** is a JS library for autofilling Japanese address using zip code entry. Implementing was made simple by only assigning classes to the input fields.
+
+Compared to *AjaxZip3*, Yubinbango does not need any JS event settings and will run automatically by adding classes.
+
+Yubinbango triggers with *onkeyup* on the zip field, if you preffer to use a different event, such as button click it is recommended to use AjaxZip3 instead. To implement, read [Auto fill Japanese address from zip code with AjaxZip3](/blog/auto-fill-japan-address-from-zipcode).
+
+
+## How to implement YubinBango
+1. Import the YubinBango library to your document.
+
+```
+<script src="https://yubinbango.github.io/yubinbango/yubinbango.js" charset="UTF-8"></script>
+```
+
+2. Add the class “h-adr” to the form tag
+
+```
+<form class="h-adr">
+```
+
+3. Add a hidden field for country inside the form
+
+```
+<input type="hidden" class="p-country-name" value="Japan">
+```
+
+4. Add class “p-postal-code” to the zip code input fields
+
+```
+// for 2 zip fields divided between the dash
+<input class="p-postal-code" type="text" name="zip1" maxlength="3">－
+<input class="p-postal-code" type="text" name="zip2" maxlength="4">
+
+// for a single zip field
+<input class="p-postal-code" type="text" name="zip" maxlength="8">
+```
+
+5. Add classes to the address fields
+
+```
+// All address fields
+<input class="p-region" type="text">
+<input class="p-locality" type="text">
+<input class="p-street-address" type="text">
+<input class="p-extended-address" type="text">
+
+// classes can be combined such as
+<input class="p-region p-locality" type="text">
+<input class="p-street-address p-extended-address" type="text">
+```
+
+## Customizing the address form
+
+### Zip Code
+
+The Zip code area can be combined to 1 or divided into 2. Simply add the class `p-postal-code` to the zip fields to tell the automation script of where our zip is. *Since zip codes in Japan are composed of 3 __digits, a dash and then 4 digits__*, it has became a common practice to divide the input fields into two.
+
+However, 1 zip code filed also works, but a dash in between is a must to trigger the automation. Eg. `[100-0001]`
+
+### Address area
+
+The address area can be divided into 4 fields with specific classes.
+
+- **p-region** for the prefecture,
+- **p-locality** for the municipality,
+- **p-street-address** for the street or town, and
+- **p-extended-address** for any extra address available.
+
+Most of the time, there is no need to divide the address fields into four. From my experience, there are more forms with only one address field, and in this case all classes above can be combined to one single input element.
+
+Clients will specify which one they prefer. Unless asked so, one address field is enough.
+
