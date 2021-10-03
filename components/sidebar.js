@@ -6,6 +6,7 @@ export default function Sidebar({ recentPost }) {
   const categories = useCategories();
   return(
     <aside className={styles.sidebar}>
+    {recentPost && 
       <div className={styles.sideContain}>
         <h2>Recent Posts</h2>
         <nav><ul>
@@ -16,6 +17,7 @@ export default function Sidebar({ recentPost }) {
           ))}
         </ul></nav>
       </div>
+    }
       <div className={styles.sideContain}>
         <h2>Categories</h2>
         <nav><ul>
