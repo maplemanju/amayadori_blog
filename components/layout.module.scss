@@ -51,8 +51,6 @@
 
 .main {
   width: 70%;
-  background: #fff;
-  @extend %box-padding;
 }
 
 @media only screen and (max-width: $tablet2) {

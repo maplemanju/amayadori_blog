@@ -28,7 +28,7 @@ export default function Home({ allPostsData, recentPost }) {
       <Head>
         <title>{siteTitle} – Nomad Coder Life in Japan</title>
       </Head>
-      <section>
+      <section className={utilStyles.contentBody}>
         <ul className={utilStyles.blogList}>
           {allPostsData.map(({ id, date, title, summary, category }) => (
             <li className={utilStyles.listItem} key={id}>
@@ -37,13 +37,12 @@ export default function Home({ allPostsData, recentPost }) {
                 <a>{title}</a>
               </Link>
               </h2>
-              <div>
-                <span className={utilStyles.lightText}>
-                  <Date dateString={date} />
-                </span>
+              <div className={utilStyles.metaInfo}>
                 <Link href={`/category/${category}`}>
                   <a className={utilStyles.tagStyle}>{categories.find(cat => cat.id === category).label}</a>
                 </Link>
+                <span style={{padding: "0 .5em"}}>/</span>
+                <Date dateString={date}/>
               </div>
               <p>{summary}</p>
               <Link href={`/blog/${id}`}>

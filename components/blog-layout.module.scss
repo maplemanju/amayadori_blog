@@ -1,19 +1,23 @@
 @use "../styles/vars" as *;
 
 .content {
+  %marginBottom {
+    margin: 0 auto 1.7rem;
+  }
+
   p, pre, blockquote, ul, ol {
     margin-top: 0;
-    margin-bottom: 1.5em;
+    @extend %marginBottom;
   }
   blockquote {
     background: $light-accent;
     border: 0;
-    margin: 1.5em auto;
     width: 80%;
     min-width: 280px;
     border: dotted 4px $highlight;
     border-radius: 20px;
     padding: 1.2em;
+    @extend %marginBottom;
     p {
       margin: 0;
     }
@@ -26,14 +30,23 @@
     padding: 1.6em;
     background: #fff3f3;
     overflow: auto;
+    max-height: 500px;
+    @extend %marginBottom;
   }
   h2 {
     background: $main;
     padding: 5px 10px;
+    margin-top: 3rem;
+    @extend %marginBottom;
   }
   h3 {
     color: $dark-highlight;
     border-bottom: 2px dashed #ccc;
+    @extend %marginBottom;
+  }
+  .summary {
+    font-style: italic;
+    margin: 1em 0 0;
   }
 
 }

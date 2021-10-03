@@ -16,6 +16,9 @@
   .listItem {
     padding: 3rem 0;
     border-bottom: 2px solid $main;
+    &:first-child {
+      padding-top: 0;
+    }
     &:last-child {
       border-bottom: 0;
     }
@@ -23,8 +26,9 @@
   
 }
 
-.lightText {
+.metaInfo {
   color: #888;
+  font-size: .9em;
 }
 
 .headingStyle1, .headingStyle1 * {
@@ -41,23 +45,31 @@
 .tagStyle {
   background: none;
   border: 0;
-  margin: 0 1em;
-  color: #888;
+  color: inherit;
 }
 
-.arcTitle {
-  font-family: Courier New,monospace;
-  font-size: 2.5em;
-  margin: 0;
-  color: $light-accent;
-  border-bottom: dashed $main 2px;
-  text-shadow: 
-    -1px -1px 1px $dark-highlight, 
-    2px 2px 1px $dark-highlight, 
-    -1px 0px 1px $dark-highlight, 
-    1px 1px 1px $dark-highlight;
-  line-height: normal;
-  padding-bottom: 1rem;
+.contentBody {
+  background: #fff;
+  @extend %box-padding;
+  h2:first-child {
+    margin-top: 0.5em;
+  }
+}
 
-  //text-shadow: -2px -2px 1px #e69595, -2px 2px 1px #e69595, 2px -2px 1px #e69595, 2px 2px 1px #e69595;
+.contentHeader {
+  @extend %box-padding;
+  background: $light-main;
+
+  .arcTitle {
+    font-family: Courier New,monospace;
+    font-size: 2.5em;
+    margin: 0;
+    color: $light-accent;
+    text-shadow: 
+      -1px -1px 1px $dark-highlight, 
+      2px 2px 1px $dark-highlight, 
+      -1px 0px 1px $dark-highlight, 
+      1px 1px 1px $dark-highlight;
+    line-height: normal;
+  }
 }

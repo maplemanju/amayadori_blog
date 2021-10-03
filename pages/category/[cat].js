@@ -21,10 +21,10 @@ const Cat = ({allPostsData, recentPost}) => {
         <meta name="description" content={`${category} related articles. ${siteDesc}`}/>
         <meta name="og:description" content={`${category} related articles. ${siteDesc}`} />
       </Head>
-      <section>
-      <h1 className={utilStyles.arcTitle}>{category}</h1>
-      </section>
-      <section>
+      <header className={utilStyles.contentHeader}>
+        <h1 className={utilStyles.arcTitle}>{category}</h1>
+      </header>
+      <section className={utilStyles.contentBody}>
         <ul className={utilStyles.blogList}>
           {allPostsData.filter(({category}) => category === cat).map(({ id, date, title, summary }) => {
             return (
