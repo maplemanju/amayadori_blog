@@ -1,11 +1,9 @@
 import Head from 'next/head'
-import { useEffect, useState } from 'react'
 import Layout, { siteTitle } from '../components/layout'
 import utilStyles from '../styles/utils.module.scss'
 import { getSortedPostsData } from '../lib/posts'
 import Link from 'next/link'
 import Date from '../components/date'
-import Sidebar from '../components/sidebar'
 import useCategories from '../components/categories'
 import Pagination, { paginate } from '../components/pagination'
 import { useRouter } from 'next/router'
@@ -13,7 +11,7 @@ import { useRouter } from 'next/router'
 
 export async function getStaticProps() {
   const allPostsData = await getSortedPostsData()
-  const recentPost = await getSortedPostsData(2)
+  const recentPost = await getSortedPostsData(5)
   return {
     props: {
       allPostsData,

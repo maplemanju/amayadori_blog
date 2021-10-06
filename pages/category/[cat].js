@@ -14,7 +14,7 @@ const Cat = ({allPostsData, recentPost}) => {
   const categories = useCategories()
   const category = categories.find(category => category.id === cat).label
   const catData = allPostsData.filter(({category}) => category === cat)
-  
+
   //pagination info
   const postPerPage = 10
   const checkPage = router.query.page || router.asPath.match(new RegExp(`[&?]page=(.*?)(&|$)`)) || 1
@@ -62,7 +62,7 @@ const Cat = ({allPostsData, recentPost}) => {
 
 export async function getStaticProps() {
   const allPostsData = await getSortedPostsData()
-  const recentPost = await getSortedPostsData(3)
+  const recentPost = await getSortedPostsData(5)
   return {
     props: {
       allPostsData,
