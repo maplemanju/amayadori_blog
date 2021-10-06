@@ -7,7 +7,9 @@ import Link from 'next/link'
 import Date from '../components/date'
 import Sidebar from '../components/sidebar'
 import useCategories from '../components/categories'
-import dynamic from 'next/dynamic'
+import Pagination, { paginate } from '../components/pagination'
+import { useRouter } from 'next/router'
+
 
 export async function getStaticProps() {
   const allPostsData = await getSortedPostsData()
@@ -22,7 +24,14 @@ export async function getStaticProps() {
 
 export default function Home({ allPostsData, recentPost }) {
   const categories = useCategories()
+  const router = useRouter()
 
+  //pagination info
+  const postPerPage = 10
+  const checkPage = router.query.page || router.asPath.match(new RegExp(`[&?]page=(.*?)(&|$)`)) || 1
+  const currentPage = Array.isArray(checkPage) ? Number(checkPage[1]) : Number(checkPage)
+  const postsData = paginate(allPostsData, currentPage, postPerPage);
+  
   return (
     <Layout sideBarData={recentPost}>
       <Head>
@@ -30,7 +39,7 @@ export default function Home({ allPostsData, recentPost }) {
       </Head>
       <section className={utilStyles.contentBody}>
         <ul className={utilStyles.blogList}>
-          {allPostsData.map(({ id, date, title, summary, category }) => (
+          {postsData.map(({ id, date, title, summary, category }) => (
             <li className={utilStyles.listItem} key={id}>
               <h2 className={utilStyles.headingStyle1}>
               <Link href={`/blog/${id}`}>
@@ -52,6 +61,7 @@ export default function Home({ allPostsData, recentPost }) {
           ))}
         </ul>
       </section>
+      <Pagination length={allPostsData.length} postPerPage={postPerPage} currentPage={currentPage} />
     </Layout>
   )
 }

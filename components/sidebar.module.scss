@@ -1,7 +1,7 @@
 @use "../styles/vars" as *;
 
 .sidebar {
-  width: 30%;
+  width: 340px;
   padding-left: 30px;
   
   .sideContain {
@@ -24,8 +24,9 @@
     border: none;
     color: inherit;
     background: $light-main;
-    margin-bottom: 0.25em;
+    margin-bottom: 0.6em;
     padding: 0.5em;
+    font-size: 0.8em;
   }
   
 }

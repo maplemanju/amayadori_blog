@@ -73,3 +73,21 @@
     line-height: normal;
   }
 }
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin: 2em 0;
+  a {
+    margin: 0 0.5em;
+    padding: 3px 10px;
+    background: #fff;
+    border-bottom: none;
+    color: $dark-main;
+  }
+  .current {
+    background: $dark-highlight;
+    font-weight: bold;
+    color: #fff;
+  }
+}

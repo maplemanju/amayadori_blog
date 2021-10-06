@@ -6,13 +6,21 @@ import utilStyles from '../../styles/utils.module.scss'
 import Link from 'next/link'
 import Date from '../../components/date'
 import useCategories from '../../components/categories'
-
+import Pagination, { paginate } from '../../components/pagination'
 
 const Cat = ({allPostsData, recentPost}) => {
   const router = useRouter()
   const { cat } = router.query
   const categories = useCategories()
   const category = categories.find(category => category.id === cat).label
+  const catData = allPostsData.filter(({category}) => category === cat)
+  
+  //pagination info
+  const postPerPage = 10
+  const checkPage = router.query.page || router.asPath.match(new RegExp(`[&?]page=(.*?)(&|$)`)) || 1
+  const currentPage = Array.isArray(checkPage) ? Number(checkPage[1]) : Number(checkPage)
+  const postsData = paginate(catData, currentPage, postPerPage);
+  
 
   return (
     <Layout sideBarData={recentPost}>
@@ -26,7 +34,7 @@ const Cat = ({allPostsData, recentPost}) => {
       </header>
       <section className={utilStyles.contentBody}>
         <ul className={utilStyles.blogList}>
-          {allPostsData.filter(({category}) => category === cat).map(({ id, date, title, summary }) => {
+          {postsData.map(({ id, date, title, summary }) => {
             return (
             <li className={utilStyles.listItem} key={id}>
               <h2 className={utilStyles.headingStyle1}>
@@ -34,8 +42,10 @@ const Cat = ({allPostsData, recentPost}) => {
                 <a>{title}</a>
               </Link>
               </h2>
-              <div className={utilStyles.lightText}>
-                <Date dateString={date} />
+              <div className={utilStyles.metaInfo}>
+                {category}
+                <span style={{padding: "0 .5em"}}>/</span>
+                <Date dateString={date}/>
               </div>
               <p>{summary}</p>
               <Link href={`/blog/${id}`}>
@@ -45,6 +55,7 @@ const Cat = ({allPostsData, recentPost}) => {
           })}
         </ul>
       </section>
+      <Pagination length={catData.length} postPerPage={postPerPage} currentPage={currentPage} category={cat}/>
     </Layout>
   )
 }
