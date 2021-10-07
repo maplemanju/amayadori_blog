@@ -10,7 +10,7 @@
     @extend %marginBottom;
   }
   blockquote {
-    background: $light-accent;
+    background: #fff3f3;
     border: 0;
     width: 80%;
     min-width: 280px;
@@ -24,15 +24,18 @@
   }
 
   pre {
-    border: 0;
-    border-radius: 6px;
-    line-height: 1.45;
-    padding: 1.6em;
-    background: #fff3f3;
-    overflow: auto;
-    max-height: 500px;
+    //border: 0;
+    //border-radius: 6px;
+    //line-height: 1.45;
+    //padding: 1.6em;
+    // background: #fff3f3;
+    //overflow: auto;
+    //max-height: 500px;
     font-size: 0.8em;
     @extend %marginBottom;
+  }
+  code {
+    background: #fdf6e3;
   }
   h2 {
     background: $main;

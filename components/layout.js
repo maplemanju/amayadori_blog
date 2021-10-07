@@ -1,8 +1,5 @@
 import Head from 'next/head'
-import Image from 'next/image'
-import { useEffect } from "react";
 import styles from './layout.module.scss'
-import utilStyles from '../styles/utils.module.scss'
 import Link from 'next/link'
 import Sidebar from './sidebar'
 
@@ -15,7 +12,7 @@ export default function Layout({ children, sideBarData }) {
   if (typeof window !== 'undefined') {
     homeSrc = window.location.origin
   }
-  
+
   return (
     <div className={styles.appBody}>
       <Head>
@@ -54,7 +51,6 @@ function Header() {
   return(
     <header className={styles.header}>
       <div className={styles.container}>
-
         {/* <Link href="/">
           <a>
             <Image

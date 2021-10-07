@@ -19,25 +19,25 @@ Yubinbango triggers with *onkeyup* on the zip field, if you preffer to use a dif
 ## How to implement YubinBango
 1. Import the YubinBango library to your document.
 
-```
+```html
 <script src="https://yubinbango.github.io/yubinbango/yubinbango.js" charset="UTF-8"></script>
 ```
 
 2. Add the class “h-adr” to the form tag
 
-```
+```html
 <form class="h-adr">
 ```
 
 3. Add a hidden field for country inside the form
 
-```
+```html
 <input type="hidden" class="p-country-name" value="Japan">
 ```
 
 4. Add class “p-postal-code” to the zip code input fields
 
-```
+```html
 // for 2 zip fields divided between the dash
 <input class="p-postal-code" type="text" name="zip1" maxlength="3">－
 <input class="p-postal-code" type="text" name="zip2" maxlength="4">
@@ -48,7 +48,7 @@ Yubinbango triggers with *onkeyup* on the zip field, if you preffer to use a dif
 
 5. Add classes to the address fields
 
-```
+```html
 // All address fields
 <input class="p-region" type="text">
 <input class="p-locality" type="text">

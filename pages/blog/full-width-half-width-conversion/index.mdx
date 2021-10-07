@@ -21,7 +21,7 @@ You might be wondering why a single byte is called half-width and not full-width
 
 **Half-Width characters** are one byte, mostly half the size of a full-width, and are used by roman letter languages.
 
-```
+```js
 "ａｂｃｄｅｆｇ＋！１２３" //full-width
 "abcdefg+!123" // half-width
 ```
@@ -32,7 +32,8 @@ To convert full-width to half-width characters, use replace to all the full-widt
 
 Replace the string’s character codes by **subtracting** `0xfee0` to the character code.
 
-```
+
+```js
 // let "e" be a text input element
 
 //replacing half-width's character code
@@ -53,7 +54,7 @@ To convert half-width to full-width characters, use replace to all the half-widt
 
 Replace the string’s character codes by **adding** `0xfee0` to the character code.
 
-```
+```js
 function convertToFull(e) {
   e.value = e.value.replace(/[!-~]/g, fullwidthChar =>
 String.fromCharCode(fullwidthChar.charCodeAt(0) + 0xfee0));

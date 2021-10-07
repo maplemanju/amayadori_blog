@@ -17,7 +17,7 @@ The recommended events for the input fields are *onchange* or *oninput*. **oncha
 
 I will use classes and add them to each input area to know if they pass the validation such as below:
 
-```
+```js
 function checkField(e, pattern) {
   if(e.value === "") {
     e.classList.remove("fieldOk");
@@ -36,7 +36,7 @@ The pattern props used above is the regex pattern for validation. To learn the r
 
 The function above is not enough since all of the fields on our form are composed of 1 or more text inputs, such as first name and last name. We will want to add another check if the combined values passes the final validation.
 
-```
+```js
 function checkGroup(fieldRow, name) {
   // let fieldRow be the field group's parent element
   // name is taken by removing the number on the field name such as [zip1] and [zip2]
@@ -102,20 +102,20 @@ The first field is always the name. This field is not labelled Kanji, but simply
 
 Most often a strict form will limit this name field to only Hiragana and Kanji characters.
 
-```
+```js
 regex = /^[ぁ-ん一-龯]+$/;
 ```
 
 Less stricter forms, and also those without Romaji field allows roman letters.
 
-```
+```js
 regex = /^[a-zA-Zぁ-ん一-龯]+$/;
 ```
 
 ### Furigana
 Furigana is the reading of a given kanji. For the furigana name field, the users have to spell out their name using phonetic characters hiragana or katakana. Either of the two can be used, but most often, forms limit input to one of them for uniformity. Placeholders are often used as example to declare which of it they want the users to use.
 
-```
+```js
 katakana_regex = /^[ァ-ン]+$/;
 hiragana_regex = /^[ぁ-ん]+$/;
 ```
@@ -123,7 +123,7 @@ hiragana_regex = /^[ぁ-ん]+$/;
 ### Romaji / Roman Letters
 Romaji are the equivalent of their names using Roman letters or the English alphabet. This field is not required and not always present on web forms. Add romaji field only if its a needed data.
 
-```
+```js
 letters_only_regex = /^[a-zA-Z]+$/;
 ```
 
@@ -132,14 +132,14 @@ Phone number field in Japan are most often divided into three between the dashes
 
 The first 2 fields can have a minimum of 1 digit, and the 3rd field is always 4 digits.
 
-```
+```js
 phone_1_2_regex = /^\d+$/;
 phone_3_regex = /^\d{4}$/;
 ```
 
 Since Japanese phone numbers can be between 10 to 11 digits, we also add a validation for that by combining the 3 phone number fields.
 
-```
+```js
 phone_no = phone_1 + phone_2 + phone_3;
 phone_regex = /^\d{10,11}$/;
 phone_regex.test(phone_no); // returns true if it matches 
@@ -150,7 +150,7 @@ Address fields in Japan always have automatic address library called **AjaxZip3*
 
 To match this function, first we will limit the count of zip digit value to 3 on the first and 4 on the second field. This can be combined to one field which should be 7 digits exact depending on your preference, but similar to phone number, it’s easier to type long number string separately to avoid mistakes.
 
-```
+```js
 zip1_regex = /^\d{3}$/;
 zip2_regex = /^\d{4}$/;
 // or
@@ -159,7 +159,7 @@ zip_regex = /^\d{7}$/;
 
 When checking if each fields have the correct amount of digits, also check if the address string was able to be generated on the address field. If not, it means the zip is wrong.
 
-```
+```js
 addressCorrect = zip_regex.test(zip_field.value) &&
 address1_field.value !== "";
 ```

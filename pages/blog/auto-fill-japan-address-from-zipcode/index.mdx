@@ -25,7 +25,7 @@ On the other hand, please use AjaxZip3 and continue reading below if you want th
 
 1. Insert the following script to your document.
 
-```
+```html
 <script src="https://ajaxzip3.github.io/ajaxzip3.js" charset="UTF-8"></script>
 ```
 
@@ -33,7 +33,7 @@ On the other hand, please use AjaxZip3 and continue reading below if you want th
 
 AjaxZip3 supports separated or combined address fields. For the example below, 2 zip code fields and 3 address fields are used.
 
-```
+```html
 // Zip entry field is divided into two, namely zip and zip2.
 <input type="text" name="zip1" size="4" maxlength="3">－<input type="text" name="zip2" size="5" maxlength="4">
 // Prefecture
@@ -46,15 +46,16 @@ AjaxZip3 supports separated or combined address fields. For the example below, 2
 
 3. Add onkeyup on the second zip input tag to call the js function. Match the name of the fields to use as parameter values on the function.
 
-```
-onKeyUp="AjaxZip3.zip2addr('zip1','zip2','pref','address1','address2');"
+```html
+<input type="text" name="zip2" size="5" maxlength="4"
+onKeyUp="AjaxZip3.zip2addr('zip1','zip2','pref','address1','address2');">
 ```
 
 ## Parameters of AjaxZip3
 
 The function above accepts 6 parameter values total and a minimum of 3.
 
-```
+```js
 AjaxZip3.zip2addr('zip1','zip2','prefecture','city','town','remaining_address');
 ```
 
@@ -70,13 +71,13 @@ By editing the function’s parameter, the values can be customized and combined
 
 The zip code can be combined to one value by setting the 2nd parameter to blank, and the address starting from third parameter can be combined to one field by entering the same field *name* on the 3rd and 4th parameter.
 
-```
+```js
 AjaxZip3.zip2addr('zip','','address','address');
 ```
 
 The code above will only need one field for zip code, and one field for address.
 
-```
+```html
 <input type="text" name="zip" size="10" maxlength="8" onKeyUp="AjaxZip3.zip2addr('zip','','address','address');">
 <input type="text" name="address" size="40">
 ```
