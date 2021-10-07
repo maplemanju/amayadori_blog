@@ -1,8 +1,11 @@
 // next.config.js
+
+const prism = require("remark-prism")
+
 const withMDX = require('@next/mdx')({
   extension: /\.mdx$/,
   options: {
-    remarkPlugins: [require("remark-prism")],
+    remarkPlugins: [prism],
   },
 })
 module.exports = withMDX({
