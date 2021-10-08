@@ -1,5 +1,5 @@
-import Layout, { siteTitle } from './layout'
-import Head from 'next/head'
+import Layout from './layout'
+import Seo, { siteTitle } from '../components/seo'
 import styles from './blog-layout.module.scss'
 import utilStyles from '../styles/utils.module.scss'
 import Date from './date'
@@ -14,14 +14,13 @@ import useCategories from '../components/categories'
 
 export default function BlogLayout({ meta, children }) {
   const categories = useCategories()
-
   return(
     <Layout>
-      <Head>
-        <title>{meta.title} | { siteTitle }</title>
-        <meta name="description" content={meta.summary}/>
-        <meta name="og:description" content={meta.summary} />
-      </Head>
+      <Seo
+        pageTitle={`${meta.title} | ${ siteTitle }`}
+        pageDesc={meta.summary}
+        hero={meta.heroImg}
+      />
       <article className={styles.content}>
         <header className={utilStyles.contentHeader}>
           <h1 className={utilStyles.headingStyle1}>{meta.title}</h1>

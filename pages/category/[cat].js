@@ -1,5 +1,5 @@
-import Head from 'next/head'
-import Layout, {siteTitle, siteDesc} from '../../components/layout'
+import Layout from '../../components/layout'
+import Seo, { siteTitle, siteDesc } from '../../components/seo'
 import { useRouter } from 'next/router'
 import { getSortedPostsData } from '../../lib/posts'
 import utilStyles from '../../styles/utils.module.scss'
@@ -24,11 +24,10 @@ const Cat = ({allPostsData, recentPost}) => {
 
   return (
     <Layout sideBarData={recentPost}>
-      <Head>
-        <title>{category} | { siteTitle }</title>
-        <meta name="description" content={`${category} related articles. ${siteDesc}`}/>
-        <meta name="og:description" content={`${category} related articles. ${siteDesc}`} />
-      </Head>
+      <Seo
+        pageTitle={`${category} | ${ siteTitle }`}
+        pageDesc={`${category} related articles. ${siteDesc}`}
+      />
       <header className={utilStyles.contentHeader}>
         <h1 className={utilStyles.arcTitle}>{category}</h1>
       </header>

@@ -1,5 +1,5 @@
-import Head from 'next/head'
-import Layout, { siteTitle } from '../components/layout'
+import Layout from '../components/layout'
+import Seo, { siteTitle, siteDesc } from '../components/seo'
 import utilStyles from '../styles/utils.module.scss'
 import { getSortedPostsData } from '../lib/posts'
 import Link from 'next/link'
@@ -32,9 +32,10 @@ export default function Home({ allPostsData, recentPost }) {
   
   return (
     <Layout sideBarData={recentPost}>
-      <Head>
-        <title>{siteTitle} – Nomad Coder Life in Japan</title>
-      </Head>
+      <Seo
+        pageTitle={`${siteTitle} – Nomad Coder Life in Japan`}
+        pageDesc={`Blogs about Coding, Lifestyle, Games, Manga and other nerdy things from Japan! ${siteDesc}`}
+      />
       <section className={utilStyles.contentBody}>
         <ul className={utilStyles.blogList}>
           {postsData.map(({ id, date, title, summary, category }) => (
