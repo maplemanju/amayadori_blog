@@ -1,4 +1,5 @@
 import BlogLayout from '../../../components/blog-layout'
+import CodePreview from "../../../components/code-preview"
 
 export const meta = {
   title: 'Converting between Full-Width and Half-Width Characters',
@@ -66,3 +67,6 @@ String.fromCharCode(fullwidthChar.charCodeAt(0) + 0xfee0));
 Character width conversion is needed when working on CJK websites most especially on web forms. Since full width and half width characters are essentially different strings, it’s not very ideal to have both entries on the database. It is better to set a limitation to web form users to only use one.
 
 As for which to use, it depends on the company. Some require full-width on their telephone and address data, while some asks for half-width. One way of avoiding both entries is validating the input entries, but it’s always better for the users if they can fill in forms without fixing their keyboard settings by automatically converting between half-width and full-width with Javascript.
+
+
+<CodePreview height="300" hash="dyRZbjL" />

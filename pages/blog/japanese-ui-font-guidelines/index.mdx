@@ -1,4 +1,5 @@
 import BlogLayout from '../../../components/blog-layout'
+import CodePreview from "../../../components/code-preview"
 
 export const meta = {
   title: 'Text UI on Japanese Website: Practices for best readability',
@@ -30,5 +31,31 @@ body {
 }
 p {
  margin-bottom: 1.5rem;
+}
+```
+
+### Result
+
+<CodePreview height="300" hash="gOWoeOj" />
+
+## Headings
+
+Headings are very important for web readability. Most often, visitors only glance at headings to check the information they are looking for.
+
+High contrast font color, background colors, or other designs that will make them easily differentiable from parapraph texts are recommended.
+
+Font sizes can be set easily such as font-size: 2em; EM is the percentage of the parent’s size, while REM is the percentage of the root size. For example if the font size of the parent element is 16px, then 2em is 2 times of 16 which is 32px.
+
+It is ideal to set the default font size on a greater section such as the body or article tag. This way, changing only the parent or root font-size will also change the actual size of its children headings that are set on em/rem.
+
+```css
+body {
+  font-size: 16px;
+}
+h2 {
+  font-size: 1.5rem;
+}
+h3 {
+  font-size: 1.2rem;
 }
 ```
