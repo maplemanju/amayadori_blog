@@ -66,6 +66,12 @@ figcaption {
   margin: 0 auto 1.7rem;
 }
 
+.modify:before {
+  content: "↻";
+  font-size: 0.8em;
+  margin-right: 4px;
+}
+
 @media only screen and (max-width: $mobile1) {
   .imgGallery {
     grid-template-columns: 1fr;

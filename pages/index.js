@@ -38,7 +38,7 @@ export default function Home({ allPostsData, recentPost }) {
       />
       <section className={utilStyles.contentBody}>
         <ul className={utilStyles.blogList}>
-          {postsData.map(({ id, date, title, summary, category }) => (
+          {postsData.map(({ id, publishDate, title, summary, category }) => (
             <li className={utilStyles.listItem} key={id}>
               <h2 className={utilStyles.headingStyle1}>
               <Link href={`/blog/${id}`}>
@@ -50,7 +50,7 @@ export default function Home({ allPostsData, recentPost }) {
                   <a className={utilStyles.tagStyle}>{categories.find(cat => cat.id === category).label}</a>
                 </Link>
                 <span style={{padding: "0 .5em"}}>/</span>
-                <Date dateString={date}/>
+                <Date dateString={publishDate}/>
               </div>
               <p>{summary}</p>
               <Link href={`/blog/${id}`}>

@@ -3,10 +3,19 @@ import Head from 'next/head'
 export const siteTitle = 'Amayadori'
 export const siteDesc = 'My name is Maya and I am a nomad web engineer living in Japan.'
 
-export default function Seo({ pageTitle, pageDesc, hero }) {
+export default function Seo({ pageTitle, pageDesc, hero, publishDate, updateDate }) {
   let homeSrc;
   if (typeof window !== 'undefined') {
     homeSrc = window.location.origin
+  }
+
+  const schemaData = {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": pageTitle,
+    "image": homeSrc + (hero ? hero : `/images/profile.png`),
+    "datePublished": publishDate,
+    "dateModified": updateDate
   }
 
   return (
@@ -29,6 +38,13 @@ export default function Seo({ pageTitle, pageDesc, hero }) {
       <link rel="mask-icon" href="/logo/safari-pinned-tab.svg" color="#5bbad5"/>
       <meta name="msapplication-TileColor" content="#e2edda"/>
       <meta name="theme-color" content="#e2edda"/>
+
+      {publishDate && 
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaData) }}
+        />
+      }
     </Head>
   )
 }

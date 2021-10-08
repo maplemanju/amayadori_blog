@@ -33,7 +33,7 @@ const Cat = ({allPostsData, recentPost}) => {
       </header>
       <section className={utilStyles.contentBody}>
         <ul className={utilStyles.blogList}>
-          {postsData.map(({ id, date, title, summary }) => {
+          {postsData.map(({ id, publishDate, title, summary }) => {
             return (
             <li className={utilStyles.listItem} key={id}>
               <h2 className={utilStyles.headingStyle1}>
@@ -44,7 +44,7 @@ const Cat = ({allPostsData, recentPost}) => {
               <div className={utilStyles.metaInfo}>
                 {category}
                 <span style={{padding: "0 .5em"}}>/</span>
-                <Date dateString={date}/>
+                <Date dateString={publishDate}/>
               </div>
               <p>{summary}</p>
               <Link href={`/blog/${id}`}>

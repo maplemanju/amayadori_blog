@@ -1,6 +1,5 @@
 import Head from 'next/head'
 
-
 export default function CodePreview({ height, hash }) {
   const textStyle = {
     height: `200px`,
@@ -17,7 +16,7 @@ export default function CodePreview({ height, hash }) {
   return(
   <div>
     <Head>
-      <script async="" src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
+      <script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
     </Head>
 
     <p className="codepen" data-height={height} data-slug-hash={hash} data-user="amayadoring" style={textStyle}>

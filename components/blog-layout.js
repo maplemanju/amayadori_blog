@@ -14,12 +14,15 @@ import useCategories from '../components/categories'
 
 export default function BlogLayout({ meta, children }) {
   const categories = useCategories()
+
   return(
     <Layout>
       <Seo
         pageTitle={`${meta.title} | ${ siteTitle }`}
         pageDesc={meta.summary}
         hero={meta.heroImg}
+        publishDate={meta.publishDate}
+        updateDate={meta.updateDate || meta.publishDate}
       />
       <article className={styles.content}>
         <header className={utilStyles.contentHeader}>
@@ -29,7 +32,7 @@ export default function BlogLayout({ meta, children }) {
               <a className={utilStyles.tagStyle}>{categories.find(cat => cat.id === meta.category).label}</a>
             </Link>
             <span style={{padding: "0 .5em"}}>/</span>
-            <Date dateString={meta.date}/>
+            <Date dateString={meta.updateDate} type="modify"/>
           </div>
           <p className={styles.summary}>{meta.summary}</p>
         </header>
