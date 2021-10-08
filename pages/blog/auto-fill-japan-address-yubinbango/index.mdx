@@ -1,10 +1,13 @@
 import BlogLayout from '../../../components/blog-layout'
 
+import formImg from './images/japanese-address-field.png'
+
 export const meta = {
   title: 'Auto fill Japanese address from zip code with YubinBango',
   date: '2021-09-14',
   category: 'coding',
-  summary: `YubinBango is a JS library for autofilling Japanese address using zip code entry. Implementing was made simple by only assigning classes to the input fields.`
+  summary: `YubinBango is a JS library for autofilling Japanese address using zip code entry. Implementing was made simple by only assigning classes to the input fields.`,
+  heroImg: formImg.src
 }
 
 export default ({ children }) => <BlogLayout meta={meta}>{children}</BlogLayout>
