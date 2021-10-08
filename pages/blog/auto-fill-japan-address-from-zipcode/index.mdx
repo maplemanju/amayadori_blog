@@ -1,5 +1,8 @@
 import BlogLayout from '../../../components/blog-layout'
 
+import formImg from './images/japanese-address-field.png'
+
+
 export const meta = {
   title: 'Auto fill Japanese address from zip code with AjaxZip3',
   date: '2021-07-27',
@@ -16,6 +19,8 @@ Japanese web forms have a very handy address fields which automatically generate
 >It is strongly recommended to implement address autofill on any Japanese web form.
 
 If you’re familiar and used to filling up web forms in Japan, it’s noticeable that there are very few web forms that does not automatically generate the address from zip code. As a user, I get disappointed when I find one since I always expect my address to be autofilled.
+
+<img src={formImg} alt="Japanese Email address form field" type="imgBlock" />
 
 **YuubinBango** is a similar and newer library. It uses classes to setup the form making it easier and cleaner to implement. The downside of this library is that it cannot use your preferred event and it only use *onkeyup*. To implement, read [Auto fill Japanese address from zip code with YubinBango](/blog/auto-fill-japan-address-yubinbango).
 

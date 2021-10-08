@@ -1,5 +1,10 @@
 import BlogLayout from '../../../components/blog-layout'
 
+import name from './images/form-name.png'
+import tel from './images/form-tel.png'
+import add from './images/form-add.png'
+import date from './images/form-date.png'
+
 export const meta = {
   title: 'Japanese Web Form: Common Fields and Practices',
   date: '2021-08-01',
@@ -17,6 +22,8 @@ Japanese names starts their name with their family name, then their given name c
 **Furigana fields** are needed because Japanese names have multiple ways of reading. By adding furigana, the service staff will be able know the correct way to read the customer’s name.
 
 Romaji literally means roman letters. This field will show how the customer’s name is written using the Latin alphabet that is globally recognized. This field is optional and needed for services such as credit cards and certificates.
+
+<img src={name} alt="Japanese web form for name" type="imgBlock" />
 
 ```html
 <label>お名前 (Name)</label>
@@ -50,6 +57,8 @@ For the dates on forms or anywhere on the web, **always add the labels namely �
 
 **Always make the year field selectable** instead of text input. This is because Japan have two ways to indicate year. One being more common is the Japanese calendar years (e.g. 平成５年) and the other is the global Gregorian calendar years (e.g. 1993). Both are learned and practiced in Japan but most paper forms are requiring the Japanese format while web forms uses the Gregorian format. Since we don’t want different submitted values on the calendar, it’s best to make it selectable for better control and uniformity.
 
+<img src={date} alt="Japanese web form for date" type="imgBlock" />
+
 ```html
 <label>生年月日 (Birthday)</label>
 <select id="birthyear">
@@ -74,6 +83,8 @@ The reason why Japanese forms always divide their telephone field box to three i
 
 Phone numbers can have an overwhelming amount of conditions that has to be made on the backend validation which is mostly not worth the time to make for a single input. In these cases, the minimum amount of restrictions can be made on HTML.
 
+<img src={tel} alt="Japanese web form for telephone no" type="imgBlock" />
+
 ```html
 <input type="text" maxlength="5" pattern="[0-9]{2,5}" placeholder="090">－
 <input type="text" maxlength="4" pattern="[0-9]{1,4}" placeholder="1234">－
@@ -91,3 +102,5 @@ The **zip code** is always first. To indicate zip code number, the symbol 〒 is
 Most of the time, entry forms have 2 address fields. One is for the prefecture, city and districts, and the 2nd line is the house number or building and apartment number. However, this can be combined or even divided into more specific fields.
 
 Each address are paired with their zip codes, so it is possible to automatically generate addresses from them. Adding a database for zip code address automation are not ideal, but a javascript library of it was released publicly so all web forms in Japan now adapts it. It is very convenient to have for both the users and the administrators so this is a **must to install** on your Japanese web form. To learn more, read [Auto fill Japanese address from zip code with AjaxZip3](auto-fill-japan-address-from-zipcode).
+
+<img src={add} alt="Japanese web form for address" type="imgBlock" />

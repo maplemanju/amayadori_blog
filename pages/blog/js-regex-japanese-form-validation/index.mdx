@@ -1,5 +1,7 @@
 import BlogLayout from '../../../components/blog-layout'
 
+import form from './images/realtime-validation.png'
+
 export const meta = {
   title: 'Real time Validation of Japanese Form with JS / Regex',
   date: '2021-09-13',
@@ -12,6 +14,8 @@ export default ({ children }) => <BlogLayout meta={meta}>{children}</BlogLayout>
 ## Javascript Real time form validation
 
 Real time validation of form is possible because of Javascript. The user will be able to know what was wrong with their input right after they each field and not after clicking the submit button.
+
+<img src={form} alt="Japanese web form real time JS validation with regex" type="imgBlock" />
 
 The recommended events for the input fields are *onchange* or *oninput*. **onchange** works better for me since I believe it makes more sense to wait for the user to finish filling in a field and lose cursor focus before judging them if its correct or not. Meanwhile, **oninput** is more fitting on the definition of real-time, as it will really show the validation on every input changes when typing.
 

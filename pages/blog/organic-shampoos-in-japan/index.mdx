@@ -1,5 +1,13 @@
 import BlogLayout from '../../../components/blog-layout'
 
+import girl from './images/japanese-shampoo-girl.jpeg'
+import argelanF from './images/argelan-front.jpeg'
+import argelanB from './images/argelan-back.jpeg'
+import botanistF from './images/botanist-front.jpeg'
+import botanistB from './images/botanist-back.jpeg'
+import publicorganicF from './images/publicorganic-front.jpeg'
+import publicorganicB from './images/publicorganic-back.jpeg'
+
 export const meta = {
   title: 'Search for Organic, Natural Shampoos in Japan',
   date: '2021-08-02',
@@ -8,6 +16,8 @@ export const meta = {
 }
 
 export default ({ children }) => <BlogLayout meta={meta}>{children}</BlogLayout>
+
+<img src={girl} alt="Japanese highschool girl" type="imgBlock" />
 
 Suffering from dry, oily, unruly, dull, and different hair problems are very common. Feeling envious of seeing Japanese high school girls with a healthy beautiful hair is a natural thing since hair is a big part of our appearance as well as our daily life. I often imagine myself having a very easy to manage hair that I will just have to dry it and it will look smooth and radiant without any effort, it will then take out a lot of my daily stress and make myself feel more confident. Having less stress and more confidence of course will affect my mood and my mood will affect those around me. So yes, having our healthy dream hair is not just for appearances but it is deeply connected to our life.
 
@@ -18,6 +28,11 @@ Moving to Japan, I started to rehabilitate my hair and avoided damaging practice
 From then on I started looking for silicon free products and I figured to try the natural and organic hair products here in Japan. They can be hard to find specially the descriptions on the back are all in Japanese, I thought this will be helpful so read below to on check my search for organic and natural hair products in Japan.
 
 ## Argelan
+
+<div className="imgGallery">
+  <img src={publicorganicF} alt="The Public Organic shampoo and treatment conditioner" />
+  <img src={publicorganicB} alt="The Public Organic shampoo and treatment conditioner ingredients and info" />
+</div>
 
 Argelan offers organic ingredients claiming 95% to 98% to be natural. The fragrances are a mix of two essential oil such as Bergamot and Clary Sage.
 
@@ -40,6 +55,11 @@ Refill price is around ¥1100 for 400 ml.
 
 ## The Public Organic
 
+<div className="imgGallery">
+  <img src={argelanF} alt="Argelan shampoo and treatment conditioner" />
+  <img src={argelanB} alt="Argelan shampoo and treatment conditioner ingredients and info" />
+</div>
+
 The Public Organic concept is about the power of essential oil. The fragrance is 100% from essential oil, and it has the strongest essential oil scent out of all I have tried. The scent is not for everyone, but this is a gem for those who enjoys pure essential oil aroma.
 
 The public organic have 2 line ups: Super Bouncy which is for moisture, and Super Positive which have a scent of happiness.
@@ -60,6 +80,11 @@ Refill price is around ¥1298 for 400 ml.
 - nanoparticle raw material
 
 ## Botanist
+
+<div className="imgGallery">
+  <img src={botanistF} alt="Botanist shampoo and treatment conditioner" />
+  <img src={botanistB} alt="Botanist shampoo and treatment conditioner ingredients and info" />
+</div>
 
 Botanist’s concept is the use of botanical ingredients and also promotes eco friendly practices.
 

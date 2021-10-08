@@ -28,6 +28,7 @@
   background-size: cover;
   padding-top: 275px;
   background-position: center;
+  background-repeat: no-repeat;
   color: #799d7c;
   .container {
     padding: 3em 0;
@@ -61,5 +62,15 @@
   .main {
     width: 100%;
     margin-bottom: 2.5em;
+  }
+  .footer {
+    background-size: 150%;
+    background-position: 50% 100%;
+    padding-top: 20%;
+  }
+}
+@media only screen and (max-width: $mobile1) {
+  .footer {
+    padding-top: 20px;
   }
 }

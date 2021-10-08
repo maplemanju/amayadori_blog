@@ -1,5 +1,10 @@
 import BlogLayout from '../../../components/blog-layout'
 
+import convert from './images/converttoutf8.png'
+import step1 from './images/package-step1.png'
+import banner from './images/shiftjis-utf8.png'
+import packSublime from './images/sublime-package.png'
+
 export const meta = {
   title: 'Japanese Character Encoding: Shift JIS and UTF-8',
   date: '2021-08-04',
@@ -26,12 +31,16 @@ When opening a text, csv, doc, xmls file received from a Japanese client, the ch
 Different editors have different ways to view Shift JIS. For this guide, Sublime Text 3 will be used.
 
 1. On sublime, go to package control and choose install package.
+<img src={step1} alt="Sublime package control install package" type="imgBlock" />
 
 2. On the package list, search and install ConvertToUTF8.
 3. Download [Codecs33](https://github.com/seanliang/Codecs33/tree/osx) zip file
 4. On Sublime, go to **preferences > browse package** to open the packages folder.
 5. Add the unzipped Codecs33 here. Make sure to rename the folder to Codecs33.
+<img src={packSublime} alt="Sublime packages folder for codecs33" type="imgBlock" />
+
 6. Restart Sublime and open your Shift JIS encoded file.
+<img src={convert} alt="ConvertToUTF8 package sublime save encoding menu to shift-jis" type="imgBlock" />
 
 On the file menu, this will be visible after the package installation. ConvertToUTF8 package allows reading, editing and saving files to Shift JIS.
 
