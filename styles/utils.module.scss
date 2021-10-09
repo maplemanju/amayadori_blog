@@ -15,7 +15,7 @@
 
   .listItem {
     padding: 3rem 0;
-    border-bottom: 2px solid $main;
+    border-bottom: 2px solid var(--main);
     &:first-child {
       padding-top: 0;
     }
@@ -32,14 +32,14 @@
 }
 
 .headingStyle1, .headingStyle1 * {
-  color: $dark-main;
+  color: var(--dark-main);
   font-size: 1.5rem;
   line-height: normal;
   border: 0;
   background: 0;
   margin: 0;
   a:hover {
-    color: $dark-highlight;
+    color: var(--dark-highlight);
   }
 }
 
@@ -50,7 +50,7 @@
 }
 
 .contentBody {
-  background: #fff;
+  background: var(--contFill);
   @extend %box-padding;
   h2:first-child {
     margin-top: 0.5em;
@@ -59,18 +59,18 @@
 
 .contentHeader {
   @extend %box-padding;
-  background: $light-main;
+  background: var(--light-main);
 
   .arcTitle {
     font-family: Courier New,monospace;
     font-size: 2.5em;
     margin: 0;
-    color: $light-accent;
+    color: var(--light-accent);
     text-shadow: 
-      -1px -1px 1px $dark-highlight, 
-      2px 2px 1px $dark-highlight, 
-      -1px 0px 1px $dark-highlight, 
-      1px 1px 1px $dark-highlight;
+      -1px -1px 1px var(--dark-highlight), 
+      2px 2px 1px var(--dark-highlight), 
+      -1px 0px 1px var(--dark-highlight), 
+      1px 1px 1px var(--dark-highlight);
     line-height: normal;
   }
 }
@@ -82,13 +82,13 @@
   a {
     margin: 0 0.5em;
     padding: 3px 10px;
-    background: #fff;
+    background: var(--contFill);
     border-bottom: none;
-    color: $dark-main;
+    color: var(--dark-main);
   }
   .current {
-    background: $dark-highlight;
+    background: var(--dark-highlight);
     font-weight: bold;
-    color: #fff;
+    color: var(--textColor);
   }
 }

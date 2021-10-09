@@ -5,13 +5,13 @@
   padding-left: 30px;
   
   .sideContain {
-    background: #fff;
+    background: var(--contFill);
     margin-bottom: 1em;
     @extend %box-padding;
   }
   h2 {
-    color: $dark-main;
-    border-bottom: 2px solid $dark-highlight;
+    color: var(--dark-main);
+    border-bottom: 2px solid var(--dark-highlight);
     margin: 0 0 0.5em;
   }
   ul { 
@@ -23,7 +23,7 @@
     display: block;
     border: none;
     color: inherit;
-    background: $light-main;
+    background: var(--light-main);
     margin-bottom: 0.6em;
     padding: 0.5em;
     font-size: 0.8em;

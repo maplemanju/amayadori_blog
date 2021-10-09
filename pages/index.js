@@ -8,7 +8,6 @@ import useCategories from '../components/categories'
 import Pagination, { paginate } from '../components/pagination'
 import { useRouter } from 'next/router'
 
-
 export async function getStaticProps() {
   const allPostsData = await getSortedPostsData()
   const recentPost = await getSortedPostsData(5)
