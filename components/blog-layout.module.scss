@@ -25,13 +25,6 @@
   }
 
   pre {
-    //border: 0;
-    //border-radius: 6px;
-    //line-height: 1.45;
-    //padding: 1.6em;
-    // background: #fff3f3;
-    //overflow: auto;
-    //max-height: 500px;
     font-size: 0.8em;
     @extend %marginBottom;
     background: var(--codeColor);
@@ -75,6 +68,11 @@
       p {
         flex-basis: 96%;
       }
+    }
+  }
+  @for $i from 1 through 10 {
+    ol[start="#{$i}"] {
+      counter-reset: olList ($i - 1) ;
     }
   }
 
