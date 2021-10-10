@@ -36,9 +36,35 @@
   padding-top: 275px;
   background-position: center;
   background-repeat: no-repeat;
-  color: #799d7c;
+  color:#799d7c;
   .container {
     padding: 3em 0;
+  }
+  .snsLinks {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    a {
+      flex-basis: 80px;
+      background: none;
+      color: var(--dark-highlight);
+      margin: 1em 3px;
+      padding: 5px;
+      border: 0;
+      background: var(--transModal);
+      font-size: 0.8em;
+      svg {
+        display: block;
+        margin: 10px auto;
+        transition: transform 0.3s;
+        path {
+          fill: var(--dark-highlight);
+        }
+      }
+      &:hover svg {
+        transform: scale(1.5);
+      }
+    }
   }
 }
 
