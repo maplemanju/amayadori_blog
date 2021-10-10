@@ -22,26 +22,13 @@ export default function Layout({ children, sideBarData }) {
 }
 
 function Header() {
-  const [siteTheme, setSiteTheme] = useState()
-
-  useEffect(() => {
-    setSiteTheme(window.localStorage.getItem('siteTheme1'));
-  }, []);
-
-  useEffect(() => {
-    window.localStorage.setItem('siteTheme1', siteTheme)
-    document.documentElement.setAttribute('site-theme', siteTheme)
-  }, [siteTheme])
-
 
   const switchTheme = (theme) => {
-    const switchThisTheme = siteTheme==='dark'  ? 'light' : 'dark'
+    const current = document.documentElement.getAttribute('site-theme')
+    const switchThisTheme = current === 'dark'  ? 'light' : 'dark'
     document.documentElement.setAttribute('site-theme', switchThisTheme)
-    window.localStorage.setItem('siteTheme1', switchThisTheme)
-    setSiteTheme(switchThisTheme)
   }
 
-  const switchbtn = siteTheme==='dark' ? styles.darkBtn : styles.lightBtn
 
   return(
     <header className={styles.header}>
@@ -52,7 +39,7 @@ function Header() {
         </Link>
         </div>
         <div className={styles.menu}>
-          <div className={switchbtn} onClick={() => switchTheme()} ></div>
+          <div className={styles.switchBtn} onClick={() => switchTheme()} ></div>
         </div>
       </div>
     </header>

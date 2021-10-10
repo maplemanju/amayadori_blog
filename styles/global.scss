@@ -3,7 +3,7 @@
 // normal mode
 :root {
   --textColor: #333;
-  --boldColor: #000;
+  --boldColor: #539550;
   --contFill: #fff;
   --linkColor: #7ebcda;
   --warn: #fff3f3;
@@ -20,19 +20,19 @@
 
 // dark mode
 [site-theme="dark"] {
-  --textColor: #aeaeae;
-  --boldColor: #fff;
-  --contFill: #0a0a0a;
+  --textColor: #c9c9c9;
+  --boldColor: #6ac566;
+  --contFill: #161616;
   --linkColor: #8298e4;
   --warn: #160d0d;
   --codeColor: #1d1c34;
   --footerImg: url(/images/frog-swamp-dark.png);
 
-  --main: #202a19;
-  --dark-main: #539550;
-  --light-main: #28361d;
+  --main: #000000;
+  --dark-main: #6ac566;
+  --light-main: #27321e;
   --highlight: #75699b;
-  --dark-highlight: #6c7288;
+  --dark-highlight: #9ea7c9;
   --light-accent: #111e08;
 }
 
@@ -45,6 +45,10 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",　Arial, sans-serif;
   font-weight: 300;
   color: var(--textColor);
+}
+
+h1, h2, h3, h4 {
+  font-family: Futura, -apple-system, BlinkMacSystemFont, "Segoe UI",　Arial, sans-serif;
 }
 
 * {

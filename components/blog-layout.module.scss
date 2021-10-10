@@ -9,10 +9,11 @@
     margin-top: 0;
     @extend %marginBottom;
   }
+
   blockquote {
     background: var(--warn);
     border: 0;
-    width: 80%;
+    width: 90%;
     min-width: 280px;
     border: dotted 4px var(--highlight);
     border-radius: 20px;
@@ -35,24 +36,46 @@
     @extend %marginBottom;
     background: var(--codeColor);
   }
+
   code {
     background: var(--codeColor);
   }
+
   h2 {
-    background: var(--main);
     color: var(--boldColor);
-    padding: 5px 10px;
     margin-top: 3rem;
     @extend %marginBottom;
   }
+
   h3 {
     color: var(--dark-highlight);
     border-bottom: 2px dashed #ccc;
     @extend %marginBottom;
   }
+
   .summary {
     font-style: italic;
     margin: 1em 0 0;
+  }
+
+  ol {
+    list-style: none; 
+    counter-reset: olList;
+    padding: 0;
+    li {
+      display: flex;
+      flex-wrap: wrap;
+      &:before {
+        counter-increment: olList;
+        content: counter(olList) ".";
+        color: var(--boldColor);
+        flex-basis: 4%;
+        font-weight: bold;
+      }
+      p {
+        flex-basis: 96%;
+      }
+    }
   }
 
 }
