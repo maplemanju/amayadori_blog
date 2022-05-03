@@ -1,6 +1,6 @@
 import styles from './sidebar.module.scss'
 import Link from 'next/link'
-import useCategories from './categories'
+import useCategories from '../categories'
 
 export default function Sidebar({ recentPost }) {
   const categories = useCategories();

@@ -1,5 +1,5 @@
 import Layout from './layout'
-import Seo, { siteTitle } from '../components/seo'
+import Seo, { siteTitle } from './seo'
 import styles from './blog-layout.module.scss'
 import utilStyles from '../styles/utils.module.scss'
 import Date from './date'
@@ -9,7 +9,7 @@ import H4 from './CustomMdx/H4'
 import Mdximg from './CustomMdx/image'
 import { MDXProvider } from '@mdx-js/react'
 import Link from 'next/link'
-import useCategories from '../components/categories'
+import useCategories from './categories'
 
 
 export default function BlogLayout({ meta, children }) {

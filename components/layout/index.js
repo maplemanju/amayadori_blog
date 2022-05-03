@@ -1,7 +1,7 @@
-import styles from './layout.module.scss'
+import styles from './index.module.scss'
 import Link from 'next/link'
 import Sidebar from './sidebar'
-import Seo, { siteTitle } from './seo'
+import Seo, { siteTitle } from '../seo'
 import { useState, useEffect } from 'react'
 
 export default function Layout({ children, sideBarData }) {
