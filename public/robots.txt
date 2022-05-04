@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://amayadori.cloud
+
+# Sitemaps
+Sitemap: https://amayadori.cloud/sitemap.xml
