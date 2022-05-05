@@ -12,7 +12,7 @@ import Link from 'next/link'
 import useCategories from './categories'
 
 
-export default function BlogLayout({ meta, children }) {
+export default function BlogLayout({ toc=[], meta, children }) {
   const categories = useCategories()
 
   return(
@@ -38,6 +38,15 @@ export default function BlogLayout({ meta, children }) {
         </header>
 
         <div className={utilStyles.contentBody}>
+        {toc.length > 0 && 
+          <ol className={utilStyles.toc}>
+            {toc.map(item=> {
+              const title = item.title
+              const link = title.replace(/[^a-zA-Z0-9]/g, "-").toLowerCase()
+              return <li><Link href={`#${link}`}><a>{title}</a></Link></li>
+            })}
+          </ol>
+        }
         <MDXProvider components={{h2: H2, h3: H3, h4: H4, a: Link, img: Mdximg}}>
           {children}
         </MDXProvider>

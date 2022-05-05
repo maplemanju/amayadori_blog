@@ -3,6 +3,7 @@
 // normal mode
 :root {
   --textColor: #333;
+  --textColorLight: #afafaf;
   --boldColor: #539550;
   --contFill: #fff;
   --linkColor: #7ebcda;
@@ -10,6 +11,7 @@
   --codeColor: #fdf6e3;
   --footerImg: url(/images/frog-swamp-pc.png);
   --transModal: rgba(255,255,255,0.3);
+  --transModalS: rgba(0,0,0,0.03);
 
   --main: #e2edda;
   --dark-main: #539550;
@@ -22,6 +24,7 @@
 // dark mode
 [site-theme="dark"] {
   --textColor: #c9c9c9;
+  --textColorLight: #707070;
   --boldColor: #6ac566;
   --contFill: #161616;
   --linkColor: #8298e4;
@@ -29,6 +32,7 @@
   --codeColor: #1d1c34;
   --footerImg: url(/images/frog-swamp-dark.png);
   --transModal: rgba(0,0,0,0.3);
+  --transModalS: rgba(255,255,255,0.03);
 
   --main: #000000;
   --dark-main: #6ac566;
