@@ -13,7 +13,18 @@ export const meta = {
   heroImg: banner.src
 }
 
-export default ({ children }) => <BlogLayout meta={meta}>{children}</BlogLayout>
+export const toc = [
+  {title: 'The World'},
+  {title: 'The Characters'}, 
+  {title: 'The Gameplay', 
+    subItems:[
+      {title: 'Activities'},
+      {title: 'Other features'},
+    ]},
+  {title: 'Is this game worth to purchase and play?'},
+]
+
+export default ({ children }) => <BlogLayout meta={meta} toc={toc}>{children}</BlogLayout>
 
 <img src={banner} alt="My Time At Portia by pathea games" type="imgBlock" />
 
@@ -35,7 +46,7 @@ Just like any other simulation games, there is an in game time which passes fast
 
 The main gameplay line is taking in commissions from the guild requested by townspeople and using the money earned to invest on your own crafting and improving your career and workshop. The main quest line follows your progress as a builder giving you more reputation on completion which also sets your goals most of the game.
 
-### Activities:
+### Activities
 
 - Crafting
 - Building
@@ -47,7 +58,7 @@ The main gameplay line is taking in commissions from the guild requested by town
 - Wood cutting
 - Monster fighting
 
-### Other features:
+### Other features
 
 - Scientific research
 - Faith/Religion

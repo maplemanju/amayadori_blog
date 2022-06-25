@@ -17,7 +17,13 @@ export const meta = {
   heroImg: girl.src
 }
 
-export default ({ children }) => <BlogLayout meta={meta}>{children}</BlogLayout>
+export const toc = [
+  {title: 'Argelan'},
+  {title: 'The Public Organic'}, 
+  {title: 'Botanist'},
+]
+
+export default ({ children }) => <BlogLayout meta={meta} toc={toc}>{children}</BlogLayout>
 
 <img src={girl} alt="Japanese highschool girl" type="imgBlock" />
 
@@ -32,8 +38,8 @@ From then on I started looking for silicon free products and I figured to try th
 ## Argelan
 
 <div className="imgGallery">
-  <img src={publicorganicF} alt="The Public Organic shampoo and treatment conditioner" />
-  <img src={publicorganicB} alt="The Public Organic shampoo and treatment conditioner ingredients and info" />
+  <img src={argelanF} alt="Argelan shampoo and treatment conditioner" />
+  <img src={argelanB} alt="Argelan shampoo and treatment conditioner ingredients and info" />
 </div>
 
 Argelan offers organic ingredients claiming 95% to 98% to be natural. The fragrances are a mix of two essential oil such as Bergamot and Clary Sage.
@@ -58,8 +64,8 @@ Refill price is around ¥1100 for 400 ml.
 ## The Public Organic
 
 <div className="imgGallery">
-  <img src={argelanF} alt="Argelan shampoo and treatment conditioner" />
-  <img src={argelanB} alt="Argelan shampoo and treatment conditioner ingredients and info" />
+  <img src={publicorganicF} alt="The Public Organic shampoo and treatment conditioner" />
+  <img src={publicorganicB} alt="The Public Organic shampoo and treatment conditioner ingredients and info" />
 </div>
 
 The Public Organic concept is about the power of essential oil. The fragrance is 100% from essential oil, and it has the strongest essential oil scent out of all I have tried. The scent is not for everyone, but this is a gem for those who enjoys pure essential oil aroma.

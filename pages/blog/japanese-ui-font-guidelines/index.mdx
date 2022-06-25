@@ -9,7 +9,15 @@ export const meta = {
   summary: `Typography contributes to a website’s readability. Having a good web typography will let visitors have a better time on your site. There are ways and common practices to increase a Japanese web pages readability with typography.`
 }
 
-export default ({ children }) => <BlogLayout meta={meta}>{children}</BlogLayout>
+export const toc = [
+  {title: 'Paragraph and overall texts',
+    subItems:[
+      {title: 'Result'},
+    ]},
+  {title: 'Headings'}
+]
+
+export default ({ children }) => <BlogLayout meta={meta} toc={toc}>{children}</BlogLayout>
 
 ## Paragraph and overall texts
 

@@ -25,7 +25,38 @@ export const meta = {
   heroImg: hiraKaku.src
 }
 
-export default ({ children }) => <BlogLayout meta={meta}>{children}</BlogLayout>
+export const toc = [
+  {title: 'Sans-serif / Gothic',
+    subItems:[
+      {title: 'Meiryo / メイリオ (2007)'},
+      {title: 'Meiryo UI (2007)'},
+      {title: 'Yu Gothic / 游ゴシック (2013)'},
+      {title: 'MS UI Gothic (1998)'},
+      {title: 'MS PGothic / ＭＳ Ｐゴシック (1995)'},
+      {title: 'MS Gothic / ＭＳ ゴシック (1992)'},
+      {title: 'Hiragino Sans / ヒラギノ角ゴシック (2015)'},
+      {title: 'Hiragino Kaku Gothic ProN / ヒラギノ角ゴ ProN (2001/2007)'},
+      {title: 'Hiragino Maru Gothic ProN / ヒラギノ丸ゴ ProN (2001/2007)'},
+      {title: 'YuGothic (2013)'},
+      {title: 'Osaka'},
+      {title: 'Hiragino Sans'},
+      {title: 'HiraKakuProN-W3 / HiraKakuProN-W6'},
+      {title: 'HiraMaruProN-W4'},
+      {title: 'Roboto (2011)'},
+    ]},
+  {title: 'Serif / Mincho', 
+    subItems:[
+      {title: 'Yu Mincho'},
+      {title: 'MS PMincho'},
+      {title: 'MS Mincho'},
+      {title: 'Hiragino Mincho ProN / ヒラギノ明朝 Pro (2001/2007)'},
+      {title: 'YuMincho / 游明朝体'},
+      {title: 'HiraMinProN-W3 / HiraMinProN-W6'},
+    ]
+  },
+]
+
+export default ({ children }) => <BlogLayout meta={meta} toc={toc}>{children}</BlogLayout>
 
 Japanese font-family can be hard to search for while figuring out all their differences and whether they are still supported. Because different OS have different available fonts, it is especially hard to check for how they are displayed on your website.
 

@@ -21,7 +21,21 @@ export const meta = {
   heroImg: train.src
 }
 
-export default ({ children }) => <BlogLayout meta={meta}>{children}</BlogLayout>
+export const toc = [
+  {title: 'First of all, what is a Torokko?'},
+  {title: 'Sagano Romantic Train'},
+  {title: 'What is an onsen?'},
+  {title: 'Rurikei Onsen of Nantan, Kyoto',
+  subItems:[
+      {title: 'From Kameoka Torokko to Sonobe Station'},
+      {title: 'From Sonobe Station to Rurikei Onsen by shuttle bus'},
+      {title: 'Rurikei Onsen entry pricing plans'},
+      {title: 'Inside Rurikei Onsen'},
+  ]},
+  {title: 'Going back to Kyoto'},
+]
+
+export default ({ children }) => <BlogLayout meta={meta} toc={toc}>{children}</BlogLayout>
 
 
 <img src={train} alt="Sagano Romantic Train" type="imgBlock" />
@@ -110,7 +124,7 @@ Unfortunately, if you are not staying overnight, you will have to watch out for 
 >Fun note:  
 >Japanese people have a culture of drinking coffee milk or strawberry milk after bath as a refreshment!
 
-#### Going back to Kyoto
+### Going back to Kyoto
 
 To ride the shuttle bus, just go back to the same area where the bus stopped and wait for it to come. Make sure to ride the one that goes back to Sonobe since there is another place where the shuttle bus goes to. To make sure, just ask the driver “Sonobe eki?” or just simply ride the one that looks like its about to leave at 7:20 pm.
 

@@ -12,7 +12,14 @@ export const meta = {
   heroImg: formImg.src
 }
 
-export default ({ children }) => <BlogLayout meta={meta}>{children}</BlogLayout>
+export const toc = [
+  {title: 'Email Input'},
+  {title: 'Benefits of strict email address fields'}, 
+  {title: 'Cons of strict email address fields'},
+  {title: 'Result'}
+]
+
+export default ({ children }) => <BlogLayout meta={meta} toc={toc}>{children}</BlogLayout>
 
 ## Email Input
 

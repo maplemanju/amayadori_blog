@@ -108,20 +108,30 @@ ol.toc {
     left: 10px;
     padding: 0 10px;
   }
+  li {
+    display: list-item;
+    &:before {
+      content: none;
+    }
+    &::marker {
+      color: var(--textColorLight);
+    }
+    a {
+      color: var(--textColor);
+      background: none;
+      border: none;
+    }
+  }
 
+  ol {
+    list-style: lower-roman;
+    padding-left: 18px;
+    margin: 0;
     li {
-      display: list-item;
-      &:before {
-        content: none;
-      }
       &::marker {
-        color: var(--textColorLight);
-      }
-      a {
-        color: var(--textColor);
-        background: none;
-        border: none;
+        font-size: 0.7em;
       }
     }
+  }
   
 }

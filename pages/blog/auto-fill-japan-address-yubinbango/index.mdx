@@ -12,7 +12,17 @@ export const meta = {
   heroImg: formImg.src
 }
 
-export default ({ children }) => <BlogLayout meta={meta}>{children}</BlogLayout>
+export const toc = [
+  {title: 'How to implement YubinBango'},
+  {title: 'Customizing the address form', 
+    subItems:[
+      {title: 'Zip Code'},
+      {title: 'Address area'}
+    ]
+  },
+]
+
+export default ({ children }) => <BlogLayout toc={toc} meta={meta}>{children}</BlogLayout>
 
 Compared to *AjaxZip3*, Yubinbango does not need any JS event settings and will run automatically by adding classes.
 

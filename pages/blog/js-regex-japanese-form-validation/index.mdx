@@ -12,7 +12,21 @@ export const meta = {
   heroImg: form.src
 }
 
-export default ({ children }) => <BlogLayout meta={meta}>{children}</BlogLayout>
+export const toc = [
+  {title: 'Javascript Real time form validation'},
+  {title: 'Name', 
+    subItems:[
+      {title: 'Kanji / Japanese character'},
+      {title: 'Furigana'},
+      {title: 'Romaji / Roman Letters'},
+    ]
+  }, 
+  {title: 'Phone Number'},
+  {title: 'Address'},
+  {title: 'Complete sample code'}
+]
+
+export default ({ children }) => <BlogLayout meta={meta} toc={toc}>{children}</BlogLayout>
 
 ## Javascript Real time form validation
 

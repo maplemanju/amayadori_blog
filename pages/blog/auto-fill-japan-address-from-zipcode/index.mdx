@@ -13,7 +13,12 @@ export const meta = {
   heroImg: formImg.src
 }
 
-export default ({ children }) => <BlogLayout meta={meta}>{children}</BlogLayout>
+export const toc = [
+  {title: 'How to implement AjaxZip3'},
+  {title: 'Parameters of AjaxZip3'}
+]
+
+export default ({ children }) => <BlogLayout meta={meta} toc={toc}>{children}</BlogLayout>
 
 Japanese web forms have a very handy address fields which automatically generates the address upon entering the zip code. Not only that it helps users by automatically filling up their address, but it also greatly helps the user from avoiding mistakes on both filling up the address and zip code.
 

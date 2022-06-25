@@ -14,7 +14,20 @@ export const meta = {
   heroImg: banner.src
 }
 
-export default ({ children }) => <BlogLayout meta={meta}>{children}</BlogLayout>
+export const toc = [
+  {title: 'What is Shift JIS?',
+    subItems:[
+      {title: 'How to view a Shift JIS encoded file'},
+    ]},
+  {title: 'UTF-8 for Japanese character encoding', 
+    subItems:[
+      {title: 'Convert Shift JIS to UTF-8 with PHP'},
+    ]
+  }, 
+  {title: 'Which should you use, Shift JIS or UTF-8'}
+]
+
+export default ({ children }) => <BlogLayout meta={meta} toc={toc}>{children}</BlogLayout>
 
 There are several Japanese character encoding, but Shift JIS and UTF-8 are the two important ones.
 

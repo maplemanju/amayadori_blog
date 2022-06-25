@@ -15,8 +15,12 @@ export const meta = {
   summary: 'If you are looking for the best place to play Pokemon Go Community day in Okinawa, then this blog is for you!',
   heroImg: banner.src
 }
+export const toc = [
+  {title: 'Pallete Kumoji, Naha'},
+  {title: 'Aeon Mall Rycom'},
+]
 
-export default ({ children }) => <BlogLayout meta={meta}>{children}</BlogLayout>
+export default ({ children }) => <BlogLayout toc={toc} meta={meta}>{children}</BlogLayout>
 
 <img src={banner} alt="Pokemon Go Okinawa" type="imgBlock" />
 
@@ -40,7 +44,7 @@ The recommended place to stay is on the **Rakuen Cafe Okinawa** on second floor 
 
 The vegetarian taco rice is my choice. The minced meat mixed with taco seasoning is instead replaced with tofu. I recommend this not only for vegetarian but for anyone who is looking for a healthy and delicious Okinawan meal.
 
-## Aeon Mall Rycom {#rycom}
+## Aeon Mall Rycom
 
 <img src={rycomPoke} alt="Pokemon Store on Okinawa Rycom" caption="Pokemon Store on Okinawa Rycom" type="imgBlock" />
 

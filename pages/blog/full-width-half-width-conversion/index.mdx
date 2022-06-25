@@ -9,7 +9,14 @@ export const meta = {
   summary: `Difference between Full-Width and Half-Width Characters. See how to convert between the two.`
 }
 
-export default ({ children }) => <BlogLayout meta={meta}>{children}</BlogLayout>
+export const toc = [
+  {title: 'What are Full-width and Half-width characters?'},
+  {title: 'From Full-Width to Half-Width'},
+  {title: 'From Half-Width to Full-Width'},
+  {title: 'Where is this Used?'}
+]
+
+export default ({ children }) => <BlogLayout toc={toc} meta={meta}>{children}</BlogLayout>
 
 Most of us in the English speaking world would most likely have never heard of full-width and half-width characters. As we type on our screen, we produce single byte characters. For others (esp CJK), single byte isn’t the norm since their characters do not fit on one, they need double byte.
 

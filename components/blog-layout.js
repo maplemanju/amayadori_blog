@@ -43,7 +43,18 @@ export default function BlogLayout({ toc=[], meta, children }) {
             {toc.map(item=> {
               const title = item.title
               const link = title.replace(/[^a-zA-Z0-9]/g, "-").toLowerCase()
-              return <li><Link href={`#${link}`}><a>{title}</a></Link></li>
+              const subItems = item.subItems
+              return <li><Link href={`#${link}`}><a>{title}</a></Link>{
+                subItems && subItems.length > 0 && (
+                  <ol>
+                    {subItems.map(sub=> {
+                      const subtitle = sub.title
+                      const sublink = subtitle.replace(/[^a-zA-Z0-9]/g, "-").toLowerCase()
+                      return (<li><Link href={`#${sublink}`}><a>{subtitle}</a></Link></li>) }
+                    )}
+                  </ol>
+                )
+              }</li>
             })}
           </ol>
         }

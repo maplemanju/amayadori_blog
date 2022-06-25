@@ -15,7 +15,15 @@ export const meta = {
   heroImg: name.src
 }
 
-export default ({ children }) => <BlogLayout meta={meta}>{children}</BlogLayout>
+export const toc = [
+  {title: 'Name'},
+  {title: 'Dates and Birthdate'}, 
+  {title: 'Phone number'},
+  {title: 'Address'},
+  {title: 'Try the demo code'},
+]
+
+export default ({ children }) => <BlogLayout meta={meta} toc={toc}>{children}</BlogLayout>
 
 ## Name
 Japanese names starts their name with their family name, then their given name comes after. If the name form is separated into two, always start with the lastname field.
