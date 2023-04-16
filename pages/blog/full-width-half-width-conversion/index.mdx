@@ -1,22 +1,27 @@
-import BlogLayout from '../../../components/blog-layout'
-import CodePreview from "../../../components/code-preview"
+import BlogLayout from "../../../components/blog-layout";
+import CodePreview from "../../../components/code-preview";
 
 export const meta = {
-  title: 'Converting between Full-Width and Half-Width Characters',
-  publishDate: '2021-09-22',
-  updateDate: '2021-09-22',
-  category: 'coding',
-  summary: `Difference between Full-Width and Half-Width Characters. See how to convert between the two.`
-}
+  title: "Converting between Full-Width and Half-Width Characters",
+  publishDate: "2021-09-22",
+  updateDate: "2021-09-22",
+  category: "coding",
+  summary: `Difference between Full-Width and Half-Width Characters. See how to convert between the two.`,
+};
 
 export const toc = [
-  {title: 'What are Full-width and Half-width characters?'},
-  {title: 'From Full-Width to Half-Width'},
-  {title: 'From Half-Width to Full-Width'},
-  {title: 'Where is this Used?'}
-]
+  { title: "What are Full-width and Half-width characters?" },
+  { title: "From Full-Width to Half-Width" },
+  { title: "From Half-Width to Full-Width" },
+  { title: "Where is this Used?" },
+  { title: "Try the preview converter" },
+];
 
-export default ({ children }) => <BlogLayout toc={toc} meta={meta}>{children}</BlogLayout>
+export default ({ children }) => (
+  <BlogLayout toc={toc} meta={meta}>
+    {children}
+  </BlogLayout>
+);
 
 Most of us in the English speaking world would most likely have never heard of full-width and half-width characters. As we type on our screen, we produce single byte characters. For others (esp CJK), single byte isn’t the norm since their characters do not fit on one, they need double byte.
 
@@ -31,8 +36,8 @@ You might be wondering why a single byte is called half-width and not full-width
 **Half-Width characters** are one byte, mostly half the size of a full-width, and are used by roman letter languages.
 
 ```js
-"ａｂｃｄｅｆｇ＋！１２３" //full-width
-"abcdefg+!123" // half-width
+"ａｂｃｄｅｆｇ＋！１２３"; //full-width
+"abcdefg+!123"; // half-width
 ```
 
 ## From Full-Width to Half-Width
@@ -41,19 +46,19 @@ To convert full-width to half-width characters, use replace to all the full-widt
 
 Replace the string’s character codes by **subtracting** `0xfee0` to the character code.
 
-
 ```js
 // let "e" be a text input element
 
 //replacing half-width's character code
 function convertToHalf(e) {
-  e.value = e.value.replace(/[！-～]/g, halfwidthChar =>
-String.fromCharCode(halfwidthChar.charCodeAt(0) - 0xfee0));
+  e.value = e.value.replace(/[！-～]/g, (halfwidthChar) =>
+    String.fromCharCode(halfwidthChar.charCodeAt(0) - 0xfee0)
+  );
 }
 
-// or a shorter version using normalize 
+// or a shorter version using normalize
 function convertToHalf(e) {
-  e.value = e.value.normalize('NFKC');
+  e.value = e.value.normalize("NFKC");
 }
 ```
 
@@ -65,8 +70,9 @@ Replace the string’s character codes by **adding** `0xfee0` to the character c
 
 ```js
 function convertToFull(e) {
-  e.value = e.value.replace(/[!-~]/g, fullwidthChar =>
-String.fromCharCode(fullwidthChar.charCodeAt(0) + 0xfee0));
+  e.value = e.value.replace(/[!-~]/g, (fullwidthChar) =>
+    String.fromCharCode(fullwidthChar.charCodeAt(0) + 0xfee0)
+  );
 }
 ```
 
@@ -76,5 +82,6 @@ Character width conversion is needed when working on CJK websites most especiall
 
 As for which to use, it depends on the company. Some require full-width on their telephone and address data, while some asks for half-width. One way of avoiding both entries is validating the input entries, but it’s always better for the users if they can fill in forms without fixing their keyboard settings by automatically converting between half-width and full-width with Javascript.
 
+## Try the preview converter
 
 <CodePreview height="300" hash="dyRZbjL" />
